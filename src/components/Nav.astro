@@ -1,0 +1,211 @@
+---
+const pathname = Astro.url.pathname;
+---
+<header class="site-header">
+    <div class="header-content">
+        <h1>Massage Therapy Sarasota | Flexible Athlete Sports Massage</h1>
+        <h3>Muscle Therapy and Flexibility Training</h3>
+        <div class="container">
+            <div class="google-reviews">
+                <img src="/google-reviews.png" alt="Google Reviews" />
+            </div>
+            <div class="contact-info">
+                <div class="phone">(919) 886-1861</div>
+                <div class="address">
+                    2650 Bahia Vista St., Suite 301<br>
+                    Sarasota, FL 34239
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav>
+        <ul>
+            <li><a href="/" class={pathname === "/" ? "active" : ""}>Home</a></li>
+            <li class="dropdown">
+                <a 
+                    href="#" 
+                    class={pathname.startsWith("/about") ? "active" : ""}
+                    aria-haspopup="true" 
+                    aria-expanded="false"
+                >
+                    About
+                </a>
+                <ul class="dropdown-content">
+                    <li><a href="/about-flexible-athlete-treatments" class={pathname === "/about-flexible-athlete-treatments" ? "active" : ""}>Flexible Athlete Treatments</a></li>
+                    <li><a href="/about-julie" class={pathname === "/about-julie" ? "active" : ""}>About Julie</a></li>
+                    <li><a href="/about-self-treatments" class={pathname === "/about-self-treatments" ? "active" : ""}>Self-Treatments</a></li>
+                    <li><a href="/about-massage" class={pathname === "/about-massage" ? "active" : ""}>About Massage</a></li>
+                    <li><a href="/about-stretching" class={pathname === "/about-stretching" ? "active" : ""}>About Stretching</a></li>
+                    <li><a href="/about-trigger-points" class={pathname === "/about-trigger-points" ? "active" : ""}>About Trigger Points</a></li>
+                    <li><a href="/about-pain-patterns" class={pathname === "/about-pain-patterns" ? "active" : ""}>Pain Patterns</a></li>
+                    <li><a href="/about-testimonials" class={pathname === "/about-testimonials" ? "active" : ""}>Testimonials</a></li>
+                </ul>
+            </li>
+            <li><a href="/articles" class={pathname === "/articles" ? "active" : ""}>Articles</a></li>
+            <li><a href="/products" class={pathname === "/products" ? "active" : ""}>Products</a></li>
+            <li><a href="/contact" class={pathname === "/contact" ? "active" : ""}>Contact</a></li>
+            <li><a href="/videos" class={pathname === "/videos" ? "active" : ""}>Videos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+    .site-header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .header-content {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    h1 {
+        margin: 0;
+        color: #333;
+        font-size: 2rem;
+    }
+
+    h3 {
+        margin: 0.5rem 0;
+        color: #666;
+        font-weight: normal;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    .google-reviews img {
+        max-width: 200px;
+        height: auto;
+    }
+
+    .contact-info {
+        text-align: left;
+    }
+
+    .phone {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #bd0000;
+    }
+
+    .address {
+        margin-top: 0.5rem;
+        color: #666;
+        line-height: 1.25rem;
+    }
+
+    nav {
+        background: linear-gradient(to right, #4169E1, #1E90FF);
+        border-radius: 4px;
+        width: 65%;
+        margin: 0 auto;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    nav li {
+        margin: 0;
+        position: relative;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        display: block;
+        transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    nav a.active {
+        background-color: #87CEEB;
+    }
+
+    /* Dropdown styles */
+    nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 300px; /* Adjust this value to make the dropdown wider */
+    padding: 10px; /* Optional: Add padding for better appearance */
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+    .dropdown-content li {
+        margin: 0;
+    }
+
+    .dropdown-content a {
+        color: #333;
+        padding: 0.5rem 1rem;
+        background: none;
+        pointer-events: auto;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f5f5f5;
+    }
+
+    .dropdown-content a.active {
+        background-color: #87CEEB;
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        nav ul {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        nav a {
+            padding: 0.75rem;
+        }
+
+        .dropdown-content {
+            position: static;
+            transform: none;
+            width: 100%;
+            box-shadow: none;
+            margin-top: 0.5rem;
+        }
+    }
+</style>
+
+<script>
+    document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
+    const toggle = dropdown.querySelector('a');
+    toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const content = dropdown.querySelector('.dropdown-content');
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    });
+});
+</script>

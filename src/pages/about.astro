@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About Us">
+    <div class="about-container">
+        <h2>About Us</h2>
+        <div class="content">
+            <section class="mission">
+                <h3>Our Mission</h3>
+                <p>We are dedicated to providing valuable insights and information through our blog platform. Our goal is to educate, inspire, and connect with our readers through high-quality content.</p>
+            </section>
+            
+            <section class="team">
+                <h3>Our Team</h3>
+                <p>Our team consists of passionate writers, researchers, and industry experts who work together to bring you the best content possible.</p>
+            </section>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .about-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    .content {
+        display: grid;
+        gap: 2rem;
+    }
+
+    section {
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h3 {
+        color: #4169E1;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        color: #666;
+        line-height: 1.6;
+    }
+</style>

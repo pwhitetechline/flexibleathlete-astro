@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="Articles">
+    <div class="articles-container">
+        <h2>Latest Articles</h2>
+        <div class="articles-grid">
+            {posts.map(post => (
+                <article class="article-card">
+                    <div class="article-date">{new Date(post.data.date).toLocaleDateString()}</div>
+                    <h3>{post.data.title}</h3>
+                    <p>{post.data.description}</p>
+                    <a href={`/posts/${post.slug}`} class="read-more">Read More →</a>
+                </article>
+            ))}
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .articles-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .article-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+    }
+
+    .article-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .article-date {
+        color: #666;
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+
+    h3 {
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    .read-more {
+        color: #4169E1;
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-block;
+        transition: color 0.2s;
+    }
+
+    .read-more:hover {
+        color: #357abd;
+    }
+</style>

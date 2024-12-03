@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const products = [
+    {
+        name: "Premium Blog Theme",
+        price: "$49",
+        description: "A beautiful, customizable theme for your blog with modern features.",
+        features: ["Responsive Design", "SEO Optimized", "Custom Widgets"]
+    },
+    {
+        name: "Blog Writing Course",
+        price: "$99",
+        description: "Learn professional blog writing techniques from industry experts.",
+        features: ["Video Lessons", "Practice Exercises", "Certificate"]
+    },
+    {
+        name: "SEO Tools Bundle",
+        price: "$79",
+        description: "Essential tools to improve your blog's search engine ranking.",
+        features: ["Keyword Research", "Analytics", "Link Building"]
+    }
+];
+---
+
+<Layout title="Products">
+    <div class="products-container">
+        <h2>Our Products</h2>
+        <div class="products-grid">
+            {products.map(product => (
+                <div class="product-card">
+                    <h3>{product.name}</h3>
+                    <p class="price">{product.price}</p>
+                    <p class="description">{product.description}</p>
+                    <ul class="features">
+                        {product.features.map(feature => (
+                            <li>{feature}</li>
+                        ))}
+                    </ul>
+                    <button class="buy-button">Learn More</button>
+                </div>
+            ))}
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .products-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    h3 {
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .price {
+        font-size: 1.5rem;
+        color: #4169E1;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        color: #666;
+        margin-bottom: 1.5rem;
+    }
+
+    .features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+    }
+
+    .features li {
+        color: #666;
+        margin-bottom: 0.5rem;
+    }
+
+    .buy-button {
+        background: #4169E1;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .buy-button:hover {
+        background: #357abd;
+    }
+</style>

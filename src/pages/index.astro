@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Massage Therapy Sarasota">
+    <main>
+        <section class="welcome">
+            <h1>Welcome to the Flexible Athlete!</h1>
+            <h2>Sarasota Sports Massage and Chronic Pain Relief Treatments</h2>
+            
+            <div class="intro">
+                <p class="highlight">Is pain stopping you from doing the things you love?</p>
+                <p class="highlight">Are you active, playing a sport you love, but feeling the results of the repetitive strain on your muscles and joints?</p>
+            </div>
+
+            <div class="about-julie">
+                <p>Julie Donnelly, LMT has been a licensed sports massage therapist working with athletes and active adults since 1989, with licenses in Florida and New York. The developer of the Julstro Method, Julie has worked with professional, endurance, world-class and local athletes, teaching them Focused Flexibility Training® self-treatments they use to keep their muscles and joints from being over-strained and injured.</p>
+            </div>
+
+            <div class="video-container">
+                <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/dSrxURd8ZJk" 
+                    title="Flexible Athlete Introduction" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="services">
+                <p>Whether you cycle, run, swim, enjoy walking, playing tennis or golf, Julie will help you improve your flexibility while eliminating the spasms that cause pain. As an athlete you may be far from home when pain or stiffness strikes. Julie teaches you how to do simple techniques that you can do while you are playing your sport.</p>
+                
+                <p>Each session is tailored to your specific needs, and focuses on finding and eliminating the source of your pain. Give me a call today and allow me to answer any questions or concerns you may have.</p>
+                
+                <p class="emphasis">YOU WILL ALSO LEARN SIMPLE TECHNIQUES YOU CAN DO YOURSELF!</p>
+            </div>
+
+            <div class="treatments">
+                <h3>Relieve These Common Aches & Pains with a Personalized Sports Massage Therapy Session:</h3>
+                <div class="conditions-grid">
+                    <ul>
+                        <li>Plantar Fasciitis</li>
+                        <li>Achilles Tendonitis</li>
+                        <li>Shin Splints</li>
+                        <li>Sciatica</li>
+                        <li>Knee Pain</li>
+                        <li>Hip Pain</li>
+                        <li>Low Back Pain</li>
+                        <li>Wrist Pain</li>
+                    </ul>
+                    <ul>
+                        <li>Pain Along the Entire Spine</li>
+                        <li>Rotator Cuff Injury</li>
+                        <li>Shoulder Pain</li>
+                        <li>Frozen Shoulder</li>
+                        <li>Upper Arm Pain</li>
+                        <li>Tennis / Golf Elbow</li>
+                        <li>Whiplash</li>
+                        <li>Headaches</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="comparison">
+                <h3>Why is Julstro Muscular Therapy Sport Massage Different Than Massage?</h3>
+                <div class="comparison-grid">
+                    <div class="julstro">
+                        <ul>
+                            <li>Julstro Muscular Therapy is not a full-body relaxing massage. It is a unique sport massage that focuses on the specific spasms that are putting pressure on the joint and/or nerve.</li>
+                            <li>Julstro Muscular Therapy is done through clothing without sliding on the skin, so oil is not necessary.</li>
+                            <li>Treatment is not only done in Julie's office, but is also done at a sporting event, the office, or any public place appropriate for the client's activity.</li>
+                            <li>Julstro Muscular Therapy eliminates the source of pain so the results are long-lasting or permanent.</li>
+                        </ul>
+                    </div>
+                    <div class="regular">
+                        <ul>
+                            <li>Massage is basically general in nature. It increases your circulation and flushes toxins out of the surface muscle fibers.</li>
+                            <li>Massage uses oil as a lubricant and can leave you feeling the need to take a shower.</li>
+                            <li>Treatment must be done in an office or other private area.</li>
+                            <li>Massage effects last for several hours.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefits">
+                <h3>More Ways You Benefit From Julie's Therapy:</h3>
+                <ul>
+                    <li>Target specific muscle groups that cause muscle tension and joint pain.</li>
+                    <li>Improved recovery time.</li>
+                    <li>Increased strength.</li>
+                    <li>Increased flexibility.</li>
+                    <li>A release of tight, overworked muscles.</li>
+                    <li>Natural joint pain relief by applying pressure to spasms, also called trigger points.</li>
+                    <li>Julie teaches you how you can easily release muscle tension before, during or after you exercise.</li>
+                    <li>Learn how to do a quick 5-10 minute self-treatment session on a particular muscle group.</li>
+                </ul>
+            </div>
+
+            <div class="closing">
+                <p>I look forward to welcoming you to the Flexible Athlete in Sarasota and Venice, Florida.</p>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .welcome {
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        color: #4169E1;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        color: #333;
+        margin: 2rem 0 1rem;
+        text-align: left;
+    }
+
+    .intro {
+        margin: 2rem 0;
+    }
+
+    .highlight {
+        color: #4169E1;
+        font-size: 1.2rem;
+        /* margin-bottom: 1rem; */
+        line-height: 1.4rem;
+    }
+
+    .emphasis {
+        color: #ff0000;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin: 2rem 0;
+    }
+
+    .about-julie, .services {
+        text-align: left;
+        margin: 2rem 0;
+        line-height: 1.6;
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 800px;
+        margin: 2rem auto;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+    }
+
+    .conditions-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        text-align: left;
+        margin: 1rem 0;
+    }
+
+    .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        text-align: left;
+        margin: 1rem 0;
+    }
+
+    ul {
+        list-style-position: inside;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+
+    .benefits ul {
+        text-align: left;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .closing {
+        margin-top: 3rem;
+        font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+        .conditions-grid,
+        .comparison-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+    }
+</style>

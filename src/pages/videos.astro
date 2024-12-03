@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const videos = [
+    {
+        title: "Introduction to Blogging",
+        thumbnail: "/video-thumb-1.jpg",
+        duration: "5:30",
+        description: "Learn the basics of starting your own blog."
+    },
+    {
+        title: "Content Creation Tips",
+        thumbnail: "/video-thumb-2.jpg",
+        duration: "8:45",
+        description: "Expert tips for creating engaging content."
+    },
+    {
+        title: "Blog Monetization Strategies",
+        thumbnail: "/video-thumb-3.jpg",
+        duration: "12:20",
+        description: "Discover ways to monetize your blog effectively."
+    }
+];
+---
+
+<Layout title="Videos">
+    <div class="videos-container">
+        <h2>Video Tutorials</h2>
+        <div class="videos-grid">
+            {videos.map(video => (
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <div class="duration">{video.duration}</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>{video.title}</h3>
+                        <p>{video.description}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .videos-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    .videos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .video-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+    }
+
+    .video-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .thumbnail {
+        background: #eee;
+        height: 180px;
+        position: relative;
+    }
+
+    .duration {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+    }
+
+    .video-info {
+        padding: 1.5rem;
+    }
+
+    h3 {
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        color: #666;
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+</style>

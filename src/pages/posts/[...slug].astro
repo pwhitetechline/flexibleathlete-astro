@@ -1,0 +1,112 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('posts');
+    return posts.map(post => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title}>
+    <article class="post-container">
+        <header>
+            <h1>{post.data.title}</h1>
+            <div class="post-meta">
+                <time datetime={post.data.date.toISOString()}>
+                    Posted on: {new Date(post.data.date).toLocaleDateString()}
+                </time>
+                <span class="author">By: {post.data.author}</span>
+            </div>
+        </header>
+        
+        <div class="content">
+            <Content />
+        </div>
+    </article>
+</Layout>
+
+<style>
+    .post-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    header {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .post-meta {
+        color: #666;
+        font-size: 0.875rem;
+    }
+
+    .author {
+        margin-left: 1rem;
+    }
+
+    .content {
+        line-height: 1.8;
+        color: #333;
+    }
+
+    .content :global(h2) {
+        color: #444;
+        margin: 2rem 0 1rem;
+    }
+
+    .content :global(h3) {
+        color: #444;
+        margin: 2rem 0 1rem;
+    }
+
+    .content :global(p) {
+        margin-bottom: 1.5rem;
+    }
+
+    .content :global(ul) {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .content :global(li) {
+        margin-bottom: 0.5rem;
+    }
+
+    .content {
+        line-height: 1.6;
+    }
+
+    /* Styles for images in blog posts */
+    .content :global(img) {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+    }
+
+    .content :global(img[style*="float: left"]) {
+        margin-right: 1.5rem;
+        margin-bottom: .25rem;
+        margin-top: 0;
+    }
+
+    .content :global(img[style*="float: right"]) {
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+        margin-top: 0;
+    }
+</style>

@@ -1,45 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { videos } from '../data/videos';
 
-const videos = [
-    {
-        title: "Introduction to Blogging",
-        thumbnail: "/video-thumb-1.jpg",
-        duration: "5:30",
-        description: "Learn the basics of starting your own blog."
-    },
-    {
-        title: "Content Creation Tips",
-        thumbnail: "/video-thumb-2.jpg",
-        duration: "8:45",
-        description: "Expert tips for creating engaging content."
-    },
-    {
-        title: "Blog Monetization Strategies",
-        thumbnail: "/video-thumb-3.jpg",
-        duration: "12:20",
-        description: "Discover ways to monetize your blog effectively."
-    }
-];
+// Group videos by category
+const videosByCategory = videos.reduce((acc, video) => {
+    acc[video.category] = [...(acc[video.category] || []), video];
+    return acc;
+}, {} as Record<string, typeof videos>);
+
+// Helper function to get YouTube embed URL
+function getYouTubeEmbedUrl(url: string) {
+    const videoId = url.split('v=')[1]?.split('&')[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+}
 ---
 
-<Layout title="Videos">
-    <div class="videos-container">
-        <h2>Video Tutorials</h2>
-        <div class="videos-grid">
-            {videos.map(video => (
-                <div class="video-card">
-                    <div class="thumbnail">
-                        <div class="duration">{video.duration}</div>
-                    </div>
-                    <div class="video-info">
-                        <h3>{video.title}</h3>
-                        <p>{video.description}</p>
-                    </div>
+<Layout title="Videos - Flexible Athlete">
+    <main class="videos-container">
+        <h1 class="page-title">Video Tutorials</h1>
+        
+        {Object.entries(videosByCategory).map(([category, categoryVideos]) => (
+            <section class="category-section">
+                <h2>{category}</h2>
+                <div class="videos-grid">
+                    {categoryVideos.map(video => (
+                        <article class="video-card">
+                            <div class="video-embed">
+                                <iframe
+                                    src={getYouTubeEmbedUrl(video.youtubeUrl)}
+                                    title={video.title}
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                                ></iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>{video.title}</h3>
+                                <p>{video.description}</p>
+                                <div class="video-meta">
+                                    <span class="duration">Duration: {video.duration}</span>
+                                </div>
+                            </div>
+                        </article>
+                    ))}
                 </div>
-            ))}
-        </div>
-    </div>
+            </section>
+        ))}
+    </main>
 </Layout>
 
 <style>
@@ -49,59 +55,105 @@ const videos = [
         padding: 2rem 1rem;
     }
 
-    h2 {
+    .page-title {
         text-align: center;
         color: #333;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+    }
+
+    .category-section {
+        margin-bottom: 3rem;
+    }
+
+    .category-section h2 {
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
     }
 
     .videos-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 2rem;
     }
 
     .video-card {
         background: white;
-        border-radius: 8px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        transition: transform 0.2s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
     }
 
     .video-card:hover {
         transform: translateY(-4px);
+        box-shadow: 0 8px 12px rgba(0,0,0,0.15);
     }
 
-    .thumbnail {
-        background: #eee;
-        height: 180px;
+    .video-embed {
         position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
     }
 
-    .duration {
+    .video-embed iframe {
         position: absolute;
-        bottom: 10px;
-        right: 10px;
-        background: rgba(0,0,0,0.8);
-        color: white;
-        padding: 0.25rem 0.5rem;
-        border-radius: 4px;
-        font-size: 0.875rem;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
     }
 
     .video-info {
         padding: 1.5rem;
     }
 
-    h3 {
+    .video-info h3 {
         color: #333;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
     }
 
-    p {
+    .video-info p {
         color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .video-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
         font-size: 0.875rem;
-        line-height: 1.5;
+        color: #666;
+    }
+
+    .duration {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    @media (max-width: 768px) {
+        .videos-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .category-section h2 {
+            font-size: 1.5rem;
+        }
+
+        .video-info h3 {
+            font-size: 1.2rem;
+        }
     }
 </style>

@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About Focused Flexibility Training">
+    <main class="about-fft">
+        <section class="content-section">
+            <h1>About Focused Flexibility Training</h1>
+            
+            <div class="mission-vision">
+                <div class="mission">
+                    <h2>Mission</h2>
+                    <p>Bring joint pain and muscle spasm relief and increased flexibility to athletes and beyond!</p>
+                </div>
+                
+                <div class="vision">
+                    <h2>Vision</h2>
+                    <p>Our stretching modality is practiced by athletes worldwide!</p>
+                </div>
+            </div>
+
+            <div class="history">
+                <h2>History & Growth</h2>
+                <p>If it wasn't for a calf cramp Focused Flexibility Training may not have ever been created!</p>
+                
+                <p>If you've ever experienced a muscle spasm, usually from a repetitive strain injury, your body can feel stiff, sore and you may experience joint pain. The tension in the muscles caused from the muscle spasm prevents you from moving easily and may cause muscles to tear when you stretch.</p>
+
+                <p>Julie Donnelly has been working with athletes, resolving the spasms that prevent them from performing at the ultimate best since 1989. She ultimately began to do telephone and email consultations for athletes who were far from her office in New York.</p>
+            </div>
+
+            <div class="story">
+                <h3>The Beginning</h3>
+                <p>A muscle spasm experience is actually what brought Julie Donnelly and Ana Johnson, together.</p>
+
+                <p>Ana Johnson is an amazing yoga teacher, but she was having a calf muscle spasm that would not release with the Yoga stretches she had come to rely upon – so she went seeking for an answer. Ana found her answer on the internet, of course, and it linked her right to Julie Donnelly and the Julstro Method (which you can read about on Julie's other website).</p>
+
+                <p>Together Julie and Ana formed TriggerPoint Yoga, a combination of trigger point muscle release techniques and Hatha Yoga stretches. TriggerPoint Yoga was designed to help people stretch without injuring muscles that were tied up in knots (a muscle knot is also know as a muscle spasm).</p>
+
+                <p>This system benefits ALL PEOPLE, but it was a no-brainer that athletes really needed this system. After all, Ana was an endurance athlete in cycling, which is what caused her muscle spasm, and Julie has been working with endurance athletes for over 20 years in her muscular therapy practice.</p>
+            </div>
+
+            <div class="team">
+                <h3>Growing the Team</h3>
+                <p>Then along came JoAnne Schaub to help get the word out! JoAnne brought years of yoga knowledge and online savviness to serve our growing community.</p>
+
+                <p>Life goes on and the unexpected happens. Ana moved on to pursue her sports, and JoAnne had two babies in rapid succession – which left Julie to carry on the good work we created together. Occasionally you'll see JoAnne's name on an article or post, and you'll always see Ana as you are watching the Focused Flexibility Training DVD's. In Julie's heart there will always be the three of us working as a team!</p>
+            </div>
+
+            <div class="evolution">
+                <h3>Evolution of the Program</h3>
+                <p>Which brings me to another change – the name of the website, and the name of the program. Julie has been working with athletes since 1989, and her passion is helping athletes find and eliminate the spasms that knock them out of the race. As a result, the DVD's are the same GREAT PROGRAM, but they're known by two names: TriggerPoint Yoga and Focused Flexibility Training.</p>
+
+                <p>If you have a muscle spasm it doesn't matter whether you love yoga or you love sports, you'll definitely REAP THE BENEFITS!</p>
+            </div>
+
+            <div class="locations">
+                <p>In our social circles you can find Julie as the "Flexible Athlete." And if you are in either Sarasota, or Venice, FL, you can even go to her office for personal attention to the spasms that are stopping you from performing at your Ultimate Best! Also watch for Julie as she travels around the USA teaching Focused Flexibility Training clinics.</p>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .about-fft {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .content-section {
+        margin-bottom: 3rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h1 {
+        color: var(--color-primary);
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        color: var(--color-primary);
+        margin: 2rem 0 1rem;
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        color: var(--color-primary);
+        margin: 1.5rem 0 1rem;
+        font-size: 1.5rem;
+    }
+
+    .mission-vision {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+        padding: 2rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .mission, .vision {
+        padding: 1rem;
+    }
+
+    .mission h2, .vision h2 {
+        margin-top: 0;
+        font-size: 1.5rem;
+    }
+
+    .history, .story, .team, .evolution, .locations {
+        margin-bottom: 2rem;
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        color: var(--color-text);
+    }
+
+    @media (max-width: 768px) {
+        .about-fft {
+            padding: 1rem;
+        }
+
+        .content-section {
+            padding: 0 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .mission-vision {
+            grid-template-columns: 1fr;
+            padding: 1rem;
+        }
+    }
+</style>

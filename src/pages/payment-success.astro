@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Payment Successful | Flexible Athlete">
+    <main class="success-page">
+        <div class="success-content">
+            <h1>Payment Successful!</h1>
+            <p>Thank you for your purchase. You will receive a confirmation email shortly.</p>
+            <div class="next-steps">
+                <h2>Next Steps</h2>
+                <ol>
+                    <li>Check your email for your receipt and booking confirmation</li>
+                    <li>Follow the instructions in the email to schedule your session</li>
+                    <li>If you don't receive an email within 5 minutes, please check your spam folder</li>
+                </ol>
+            </div>
+            <div class="buttons">
+                <a href="/store" class="button">Return to Store</a>
+                <a href="/contact" class="button secondary">Contact Us</a>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .success-page {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        background: linear-gradient(135deg, #f6f8fd 0%, #f0f4ff 100%);
+    }
+
+    .success-content {
+        background: white;
+        padding: 3rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+    }
+
+    h1 {
+        color: var(--color-text);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        color: var(--color-text-light);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .next-steps {
+        text-align: left;
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .next-steps h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: var(--color-text);
+    }
+
+    ol {
+        margin: 0;
+        padding-left: 1.5rem;
+    }
+
+    li {
+        color: var(--color-text-light);
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: var(--weight-medium);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:first-child {
+        background: var(--color-primary);
+        color: white;
+    }
+
+    .button.secondary {
+        background: white;
+        color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+        .success-content {
+            padding: 2rem;
+        }
+
+        .buttons {
+            flex-direction: column;
+        }
+
+        .button {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>

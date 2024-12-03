@@ -2,52 +2,106 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-interface Props {
-    title: string;
-}
-
 const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{title}</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <Nav />
-        <main>
-            <slot />
-        </main>
-        <Footer />
-    </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Nav />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
 </html>
-
 <style is:global>
-    :root {
-        --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    }
+	:root {
+		/* Font families */
+		--font-heading: 'Montserrat', system-ui, sans-serif;
+		--font-body: 'Inter', system-ui, sans-serif;
+		
+		/* Font weights */
+		--weight-regular: 400;
+		--weight-medium: 500;
+		--weight-semibold: 600;
+		--weight-bold: 700;
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+		/* Colors */
+		--color-text: #2c3e50;
+		--color-text-light: #666666;
+		--color-primary: #4169E1;
+		--color-background: #ffffff;
+	}
 
-    body {
-        font-family: var(--font-sans);
-        line-height: 1.6;
-        color: #333;
-    }
+	html {
+		font-family: var(--font-body);
+		background-color: var(--color-background);
+		color: var(--color-text);
+	}
 
-    main {
-        max-width: 1200px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-    }
+	body {
+		margin: 0;
+		padding: 0;
+		line-height: 1.6;
+		font-weight: var(--weight-regular);
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: var(--font-heading);
+		font-weight: var(--weight-semibold);
+		line-height: 1.2;
+		margin: 0 0 1rem 0;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		font-weight: var(--weight-bold);
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		font-size: 1.75rem;
+	}
+
+	h4 {
+		font-size: 1.25rem;
+	}
+
+	p {
+		margin: 0 0 1rem 0;
+	}
+
+	a {
+		color: var(--color-primary);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	a:hover {
+		color: color-mix(in srgb, var(--color-primary) 80%, black);
+	}
+
+	/* Utility classes */
+	.text-gradient {
+		background: linear-gradient(45deg, var(--color-primary), #6c5ce7);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		color: transparent;
+	}
 </style>

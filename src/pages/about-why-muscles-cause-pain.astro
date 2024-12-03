@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Why Muscles Cause Pain">
+    <main class="about-pain">
+        <section class="content-section">
+            <h1>Why Muscles Cause Pain</h1>
+            
+            <p>When you do the same motion over and over, contracting the muscle continuously, several things happen:</p>
+
+            <div class="pain-causes">
+                <div class="cause">
+                    <p>1) The muscle fiber responds to "muscle memory" and permanently changes the muscle fiber to the new shortened length. The problem occurs because the muscle originates on one bone, crosses over a joint, and inserts onto another bone. When the muscle is shortened by muscle memory, the two insertion points have remained the same – and tension is put onto the muscle. While the tension can be at either end, it is more frequently felt at the insertion point just over, or at, the joint.</p>
+                </div>
+
+                <div class="cause">
+                    <p>2) As the muscle fiber is contracting, but the insertion points are staying the same, the fiber may tear, causing pain in the muscle itself.</p>
+                </div>
+
+                <div class="cause">
+                    <p>3) The tendon may begin to tear away from the bone. When this happens the body sends bone cells to the area to hold onto the tendon. The build-up of bone cells forms a "spur". Nothing will stop the growth of the spur while the tendon is being pulled away from its insertion point. If you try to remove the spur, without first releasing the muscle's tension on the bone, it will either quickly return, or the tendon will tear. This is commonly seen when the calf muscles are putting strain onto the Achilles tendon. As the muscles tighten, the tendon is pulled away from the heel, and a spur is formed on the back of the heel.</p>
+                </div>
+
+                <div class="cause">
+                    <p>4) As tension is put onto a muscle fiber tiny tears happen, causing the muscle to put out a sticky exudate. The exudate then sticks to the fibers surrounding the injured fiber in a phenomenon called "splinting". When the muscle is splinted by other fibers, it is carried by the others while it is healing. However, after the fiber heals it is still stuck to the surrounding fibers, and you lose strength because this fiber is no longer effectively pulling on the tendon.</p>
+                </div>
+
+                <div class="cause">
+                    <p>5) In the case of muscles that insert onto the spine, the vertebrae are pulled out of alignment, and pressure is placed on the spinal cord and nerves. While there are many muscles that cause this problem, it is clearly seen in the case of the psoas (pronounced "so-as") muscle. The psoas originates on the lumbar (low back) vertebrae, goes around the inside of the hips where it joins with another muscle and inserts into the front of the thigh bone. When the dual-muscle, the iliopsoas, contracts normally, you bend over or lift your leg. However, when the muscle is shortened by muscle memory, the lumbar vertebrae are pulled forward, and the spinal cord is pressed by the moving vertebrae. You now have low back pain.</p>
+                </div>
+                <div class="image-wrap-section">
+                <img src="/images/8def6c_d977be3a63c244908a8bf2778e46642a~mv2_moreDetail_x2_506x432_2pass_moreDetail.png" alt="An image of a person with low back pain" />
+                <div class="cause">
+                    <p>6) Muscles can also trap a nerve, causing pain far from the site of the spasm. This is clearly seen in the case of the muscles of the neck, the scalenes. When the scalenes are in spasm they trap the bundle of nerves that become the nerves into the arm and hand. While the spasm is in the neck muscle, the pain and numbness is felt in the wrist and fingers. Until the spasm is released in the neck, the pain in the hand will not go away.</p>
+                </div>
+
+                <div class="cause">
+                    <p>7) Tight muscle tendons can also trap a nerve, causing the burning pain and tingling common with nerve damage. This is most clearly seen when the flexor (forearm) muscles are contracted, causing the tendons to become taut, and the nerve to the hand is trapped by the tendons. You have all the symptoms of carpal tunnel syndrome, but all you actually are experiencing is the result of muscle tension impinging on a nerve.</p>
+                </div>
+            </div>
+                <div class="cause">
+                    <p>8) When a muscle is pulling tightly on a joint, it is common for the joint to become stiff. Many people are told to strengthen the muscles that move the joint – but this is exactly the opposite of what actually needs to be done. The muscles need to be stretched, not strengthened. This is often seen in all of the major joints – especially the shoulders, hips, knees and elbows. People will be told to lift weights, squeeze balls, cycle, or exercise to strengthen the muscles that move the joint. As they continue to contract the muscle even further, the joint become less and less mobile, and the person is told they have "arthritis", "bursitis", or a torn ligament/tendon.</p>
+                </div>
+            </div>
+
+            <p class="conclusion">Repetitive Strain Injury can, and does, happen to muscles throughout the body. RSI will cause pain and suffering, but the good news is, it CAN be reversed quickly and easily. It's just a matter of knowing where to look for the source of the problem, and then releasing the tension in the body. And, you can do it to yourself!</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .about-pain {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .content-section {
+        margin-bottom: 3rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h1 {
+        color: var(--color-primary);
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+    }
+
+    .image-wrap-section {
+        display: flow-root;
+        margin: 2rem 0;
+        position: relative;
+    }
+
+    .image-wrap-section img {
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 1rem;
+        max-width: 200px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        top: 50%;
+        transform: translateY(15%);
+    }
+
+    @media (max-width: 768px) {
+        .image-wrap-section img {
+            float: none;
+            margin: 1rem auto;
+            display: block;
+            transform: none;
+            top: auto;
+        }
+    }
+
+    .pain-causes {
+        margin: 2rem 0;
+    }
+
+    .cause {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: linear-gradient(to right, #f8f9fa, white);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .cause:hover {
+        transform: translateX(5px);
+        background: linear-gradient(to right, #f0f2f5, white);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .cause p {
+        margin-bottom: 0;
+        position: relative;
+    }
+
+    /* .cause p::before {
+        content: "";
+        position: absolute;
+        left: -1rem;
+        top: 0.5rem;
+        width: 6px;
+        height: 6px;
+        background-color: var(--color-primary);
+        border-radius: 50%;
+    } */
+
+    .image-wrap-section .cause {
+        padding-left: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .cause {
+            padding: 1rem;
+        }
+
+        .cause:hover {
+            transform: none;
+        }
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        color: var(--color-text);
+    }
+
+    .conclusion {
+        margin-top: 3rem;
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .about-pain {
+            padding: 1rem;
+        }
+
+        .content-section {
+            padding: 0 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+    }
+</style>

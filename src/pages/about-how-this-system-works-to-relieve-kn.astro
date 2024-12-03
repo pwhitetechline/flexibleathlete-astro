@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="How This System Works to Release Muscle Knots">
+    <main class="system-works">
+        <div class="hero-section">
+            <h1>How This System Works to Release Muscle Knots</h1>
+            <div class="cost-value">
+                <h2>How much is your pain costing you?</h2>
+                <p class="highlight">For less than a visit to a specialist you can be pain free!</p>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="card main-card">
+                <p>Release muscle knots in targeted muscles with the Focused Flexibility Training Guided System, using the Bamboo Stick Massager and the Perfect Ball.</p>
+                <p>Each guided practice starts with 15 minutes of focused muscle release techniques. The remaining 30 minutes guides you through a series of Yoga style stretches targeting the same muscles you just released with the Perfect Ball or bamboo stick.</p>
+            </div>
+            <div class="image-container">
+                <div class="card image-card">
+                    <img src="/images/how-this-system-works-to-relieve-kn-1.png" alt="Bamboo stick massage demonstration" />
+                    <p>As pictured, by rolling the bamboo stick massager down the quadriceps you release muscle knots that form from exercise and from long periods of sitting.</p>
+                </div>
+
+                <div class="card image-card">
+                    <img src="/images/how-this-system-works-to-relieve-kn-2.png" alt="Perfect Ball demonstration" />
+                    <p>Using the Perfect Ball muscle knots are easily felt and released. The wall and the floor are used for assistance for additional pressure and focus.</p>
+                </div>
+            </div>
+
+            <div class="card feature-card">
+                <h2>Why It's Important to Release Muscle Knots:</h2>
+                <div class="warning-box">
+                    <p>You are often advised to stretch tight muscles, but this is often bad advice as you can tear the muscle fibers.</p>
+                </div>
+                <div class="analogy-box">
+                    <h3>A Simple Analogy</h3>
+                    <p>Think about taking a 12″ length of rope and tying enough knots in it so it is now 11″ long – then try to stretch the rope back to 12″ without untying the knots. You can imagine how that makes the knots tighter and can overstretch the fibers that are on either side of the knot.</p>
+                    <p>This is what happens with your muscles! First you need to "untie" the knots in the muscle fibers and then you can safely stretch without injury.</p>
+                </div>
+            </div>
+
+            <div class="card guarantee-card">
+                <h2>Our Guarantee:</h2>
+                <div class="guarantee-content">
+                    <p>Above all else, your success and satisfaction is what's most important to us. If you, for even a second, are not happy with your results, we'll give you a full refund for 60 days.</p>
+                    <p>This means you have 2 whole months to try this stretching system free of risk.</p>
+                    <p class="emphasis">We can confidently give you this guarantee because this system has an amazing track record! The success stories keep rolling in and soon yours will too.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .system-works {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .hero-section {
+        text-align: center;
+        margin-bottom: 3rem;
+        background: linear-gradient(135deg, var(--color-primary) 0%, #4a90e2 100%);
+        color: white;
+        padding: 3rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cost-value {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+    }
+
+    .cost-value h2 {
+        color: #ffd700;
+        font-size: 2.5rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        margin-bottom: 1rem;
+    }
+
+    .highlight {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #ffffff;
+    }
+
+    .content-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 0 auto;
+    }
+
+    .image-card {
+        width: 350px;
+    }
+
+    .image-card img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .image-card p {
+        font-size: 1.4rem;
+        line-height: 1.6;
+    }
+
+    .card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .main-card {
+        grid-column: 1 / -1;
+        background: linear-gradient(to right, #f8f9fa, white);
+    }
+
+    .feature-card {
+        grid-column: 1 / -1;
+        background: linear-gradient(to right, #f0f7ff, white);
+    }
+
+    .warning-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 4px;
+    }
+
+    .analogy-box {
+        background: #e7f5ff;
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+        border-radius: 8px;
+    }
+
+    .guarantee-card {
+        grid-column: 1 / -1;
+        background: linear-gradient(to right, #f1f8f1, white);
+        border: 2px solid #28a745;
+    }
+
+    .guarantee-content {
+        padding: 1rem;
+    }
+
+    .emphasis {
+        font-weight: 500;
+        color: #28a745;
+        font-size: 1.1rem;
+    }
+
+    h2 {
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        color: var(--color-text);
+    }
+
+    @media (max-width: 768px) {
+        .system-works {
+            padding: 1rem;
+        }
+
+        .hero-section {
+            padding: 2rem 1rem;
+        }
+
+        .hero-section h1 {
+            font-size: 2rem;
+        }
+
+        .image-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-card {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .image-card p {
+            font-size: 1.2rem;
+        }
+    }
+</style>

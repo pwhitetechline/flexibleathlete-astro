@@ -1,0 +1,375 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { products } from '../data/products';
+
+// Group products by category
+const sessionProducts = products.filter(p => p.category === 'session');
+const packageProducts = products.filter(p => p.category === 'package');
+const giftCards = products.filter(p => p.category === 'gift-card');
+
+// Payment configuration
+const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
+const STRIPE_PUBLIC_KEY = import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY;
+---
+
+<Layout title="Book a Session | Flexible Athlete">
+    <main>
+        <section class="store-hero">
+            <h1>Book Your Session</h1>
+            <p>Choose from our range of therapeutic massage services and packages</p>
+        </section>
+
+        <section class="products-section">
+            <h2>Single Sessions</h2>
+            <div class="products-grid">
+                {sessionProducts.map(product => (
+                    <div class="product-card">
+                        <div class="product-content">
+                            <h3>{product.name}</h3>
+                            {product.duration && <div class="duration">{product.duration}</div>}
+                            <p>{product.description}</p>
+                            <div class="price">${product.price.toFixed(2)}</div>
+                        </div>
+                        <button 
+                            class="buy-button"
+                            data-product-id={product.id}
+                            data-price={product.price}
+                            data-name={product.name}
+                        >
+                            Book Now
+                        </button>
+                    </div>
+                ))}
+            </div>
+
+            <h2>Packages</h2>
+            <div class="products-grid">
+                {packageProducts.map(product => (
+                    <div class="product-card">
+                        <div class="product-content">
+                            <h3>{product.name}</h3>
+                            {product.duration && <div class="duration">{product.duration}</div>}
+                            <p>{product.description}</p>
+                            <div class="price">${product.price.toFixed(2)}</div>
+                        </div>
+                        <button 
+                            class="buy-button"
+                            data-product-id={product.id}
+                            data-price={product.price}
+                            data-name={product.name}
+                        >
+                            Purchase Package
+                        </button>
+                    </div>
+                ))}
+            </div>
+
+            
+        </section>
+
+        <!-- Payment Modal -->
+        <div id="paymentModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Choose Payment Method</h2>
+                <div class="payment-buttons">
+                    <div id="paypal-button-container"></div>
+                    <button id="stripe-button" class="stripe-button">
+                        Pay with Card
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .store-hero {
+        background: linear-gradient(135deg, #f6f8fd 0%, #f0f4ff 100%);
+        padding: 4rem 2rem;
+        text-align: center;
+    }
+
+    .store-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--color-text);
+    }
+
+    .store-hero p {
+        font-size: 1.25rem;
+        color: var(--color-text-light);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .products-section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .products-section h2 {
+        font-size: 2rem;
+        margin: 2rem 0;
+        color: var(--color-text);
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .product-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .product-card h3 {
+        font-size: 1.25rem;
+        margin: 0 0 0.5rem;
+        color: var(--color-text);
+    }
+
+    .duration {
+        color: var(--color-text-light);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .product-card p {
+        color: var(--color-text-light);
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    .price {
+        font-size: 1.5rem;
+        font-weight: var(--weight-semibold);
+        color: var(--color-text);
+        margin-bottom: 1rem;
+    }
+
+    .buy-button {
+        width: 100%;
+        padding: 1rem;
+        background: var(--color-primary);
+        color: white;
+        border: none;
+        font-family: var(--font-body);
+        font-weight: var(--weight-medium);
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .buy-button:hover {
+        background: color-mix(in srgb, var(--color-primary) 80%, black);
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .modal-content {
+        position: relative;
+        background: white;
+        margin: 15% auto;
+        padding: 2rem;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 12px;
+    }
+
+    .close {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .payment-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .stripe-button {
+        padding: 1rem;
+        background: #635bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-family: var(--font-body);
+        font-weight: var(--weight-medium);
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .stripe-button:hover {
+        background: #4b45c6;
+    }
+
+    @media (max-width: 768px) {
+        .products-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .modal-content {
+            margin: 10% auto;
+            width: 95%;
+        }
+    }
+</style>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    import { loadScript } from "@paypal/paypal-js";
+
+    // Initialize payment modal functionality
+    const modal = document.getElementById('paymentModal');
+    const closeBtn = document.querySelector('.close');
+    const buyButtons = document.querySelectorAll('.buy-button');
+    const stripeButton = document.getElementById('stripe-button');
+    let currentProduct = null;
+
+    // Initialize Stripe
+    const stripe = Stripe('{STRIPE_PUBLIC_KEY}');
+
+    // Initialize PayPal
+    async function initializePayPal() {
+        try {
+            const paypal = await loadScript({ 
+                "client-id": '{PAYPAL_CLIENT_ID}',
+                currency: "USD"
+            });
+
+            paypal.Buttons({
+                style: {
+                    layout: 'vertical',
+                    color: 'blue',
+                    shape: 'rect',
+                    label: 'paypal'
+                },
+                createOrder: async (data, actions) => {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: currentProduct.price.toFixed(2),
+                                currency_code: "USD"
+                            },
+                            description: currentProduct.name
+                        }]
+                    });
+                },
+                onApprove: async (data, actions) => {
+                    const order = await actions.order.capture();
+                    handlePaymentSuccess('paypal', order);
+                },
+                onError: (err) => {
+                    console.error('PayPal Error:', err);
+                    alert('There was an error processing your payment. Please try again.');
+                }
+            }).render('#paypal-button-container');
+        } catch (error) {
+            console.error('Error loading PayPal:', error);
+        }
+    }
+
+    // Initialize Stripe payment
+    async function handleStripePayment() {
+        try {
+            // Create payment intent
+            const response = await fetch('/api/create-payment-intent', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    amount: currentProduct.price,
+                    productName: currentProduct.name
+                })
+            });
+
+            const { clientSecret } = await response.json();
+
+            const { error } = await stripe.confirmPayment({
+                elements: stripe.elements(),
+                clientSecret,
+                confirmParams: {
+                    return_url: `${window.location.origin}/payment-success`,
+                }
+            });
+
+            if (error) {
+                console.error('Stripe Error:', error);
+                alert('There was an error processing your payment. Please try again.');
+            }
+        } catch (error) {
+            console.error('Payment Error:', error);
+            alert('There was an error processing your payment. Please try again.');
+        }
+    }
+
+    // Handle successful payment
+    function handlePaymentSuccess(provider, details) {
+        // Here you can add code to:
+        // 1. Show success message
+        // 2. Send confirmation email
+        // 3. Record the transaction
+        alert('Payment successful! You will receive a confirmation email shortly.');
+        modal.style.display = 'none';
+    }
+
+    // Event Listeners
+    buyButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            currentProduct = {
+                id: button.dataset.productId,
+                price: parseFloat(button.dataset.price),
+                name: button.dataset.name
+            };
+            modal.style.display = 'block';
+        });
+    });
+
+    stripeButton?.addEventListener('click', handleStripePayment);
+
+    closeBtn?.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Initialize PayPal when the page loads
+    initializePayPal();
+</script>

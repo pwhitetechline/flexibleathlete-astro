@@ -22,7 +22,7 @@ const pathname = Astro.url.pathname;
     </div>
     
     <nav>
-        <ul>
+        <ul class="nav-links">
             <li><a href="/" class={pathname === "/" ? "active" : ""}>Home</a></li>
             <li class="dropdown">
                 <a 
@@ -35,19 +35,20 @@ const pathname = Astro.url.pathname;
                 </a>
                 <ul class="dropdown-content">
                     <li><a href="/about-flexible-athlete-treatments" class={pathname === "/about-flexible-athlete-treatments" ? "active" : ""}>Flexible Athlete Treatments</a></li>
-                    <li><a href="/about-julie" class={pathname === "/about-julie" ? "active" : ""}>About Julie</a></li>
-                    <li><a href="/about-self-treatments" class={pathname === "/about-self-treatments" ? "active" : ""}>Self-Treatments</a></li>
-                    <li><a href="/about-massage" class={pathname === "/about-massage" ? "active" : ""}>About Massage</a></li>
-                    <li><a href="/about-stretching" class={pathname === "/about-stretching" ? "active" : ""}>About Stretching</a></li>
-                    <li><a href="/about-trigger-points" class={pathname === "/about-trigger-points" ? "active" : ""}>About Trigger Points</a></li>
-                    <li><a href="/about-pain-patterns" class={pathname === "/about-pain-patterns" ? "active" : ""}>Pain Patterns</a></li>
-                    <li><a href="/about-testimonials" class={pathname === "/about-testimonials" ? "active" : ""}>Testimonials</a></li>
+                    <li><a href="/about-focused-flexibility-training" class={pathname === "/about-focused-flexibility-training" ? "active" : ""}>Focused Flexibility Training</a></li>
+                    <li><a href="/about-why-muscles-cause-pain" class={pathname === "/about-why-muscles-cause-pain" ? "active" : ""}>Why Muscles Cause Pain</a></li>
+                    <li><a href="/about-muscle-knots-cause-joint-pains" class={pathname === "/about-muscle-knots-cause-joint-pains" ? "active" : ""}>Muscle Knots Cause Joint Pain</a></li>
+                    <li><a href="/about-how-this-system-works-to-relieve-kn" class={pathname === "/about-how-this-system-works-to-relieve-kn" ? "active" : ""}>How This System Works to Release Muscle Knots</a></li>
+                    <li><a href="/about-therapy-appointment" class={pathname === "/about-therapy-appointment" ? "active" : ""}>Therapy Appointment</a></li>
+                    <li><a href="/about-success-stories" class={pathname === "/about-success-stories" ? "active" : ""}>Success Stories</a></li>
+                    <li><a href="/about-sports-nutrition" class={pathname === "/about-sports-nutrition" ? "active" : ""}>Sports Nutrition</a></li>
                 </ul>
             </li>
+            <!-- <li><a href="/store" class={pathname === "/store" ? "active" : ""}>Book a Session</a></li> -->
             <li><a href="/articles" class={pathname === "/articles" ? "active" : ""}>Articles</a></li>
             <li><a href="/products" class={pathname === "/products" ? "active" : ""}>Products</a></li>
-            <li><a href="/contact" class={pathname === "/contact" ? "active" : ""}>Contact</a></li>
             <li><a href="/videos" class={pathname === "/videos" ? "active" : ""}>Videos</a></li>
+            <li><a href="/contact" class={pathname === "/contact" ? "active" : ""}>Contact</a></li>
         </ul>
     </nav>
 </header>
@@ -148,7 +149,7 @@ const pathname = Astro.url.pathname;
     position: absolute;
     background-color: white;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 10;
     width: 300px; /* Adjust this value to make the dropdown wider */
     padding: 10px; /* Optional: Add padding for better appearance */
 }

@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Success Stories">
+    <main class="success-stories">
+        <section class="header-section">
+            <h1>Flexible Athlete aka Julie Donnelly Testimonials</h1>
+            <div class="review-cta">
+                <p>I'm always thankful for reviews, to read more reviews and leave one for me, please click on the Google logo below.</p>
+                <a href="https://www.google.com/search?ei=1q2GW7ujAYSSa_TLntgE&q=flexible+athlete+sarasota&oq=flexible+athlete+sarasota&gs_l=psy-ab.12..0i7i30k1.6962.7484.0.10020.2.2.0.0.0.0.212.420.2-2.2.0....0...1c.1.64.psy-ab..0.2.418....0.09_GPnX0WuE#lrd=0x88c3410de2ad20db:0x390ef714ef61bbf7,1,,," target="_blank" rel="noopener">
+                    <img src="/google-reviews.svg" alt="Google Reviews" />
+                </a>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="testimonial-card">
+                <div class="quote">
+                    <p>"As an athlete, when I discovered Focused Flexibility Training I was impressed. I always dreaded stretching because it was so painful and my injuries were getting in the way. Focused Flexibility Training has allowed me to become more flexible. I could feel deep tensions resolving during the first session. This was the missing link with my workouts and in my body."</p>
+                </div>
+                <div class="author">Larry C, Professor and Program Coordinator</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote">
+                    <p>"I've tried them all…tennis balls, squash ball, golf ball, bean bags, bagged marbles, assorted types from sports stores, one from local therapy center…you name it, I probably tried it! None of them really were quite 'right'…either too hard, too soft, too large diameter or too small.</p>
+                    <p>But the Trigger Point Therapy ball did the trick!!! After two self- sessions on my right hip (side) and lower back, the knots in my right hip were gone!! I can feel the ball "dig" into the hip joint with hard pressure and not bruise the muscles. I started out using the ball and bamboo stick 3-4 times a day and now down to maybe once a day to none!! Great relief…the pain which had me in tears is now gone. No more chiropractor trips!! The chiropractor said, 'the pain was in my head'…yeah right! Now I am studying the videos. Well worth the investment."</p>
+                </div>
+                <div class="author">Frank Crisp, Professional Engineer</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote">
+                    <p>"Fifteen years ago I slipped on ice and landed on my tailbone. Ouch! My hips, gluteus, hamstrings and lower back were often achy and I found it hard to find relief. Over the past 15 years, I tried chiropractic, physical therapy, massage, working with a personal trainer, yoga (without trigger point release first), pilates, and many homeopathic remedies and nothing gave me long lasting relief. However, within 2 weeks of using the DVDs, I feel virtually no discomfort anymore! This is now part of my daily exercise routine. I am on a mission to share how effective it is with many more people!"</p>
+                </div>
+                <div class="author">Bonnie McDermott, Health and Wellness Enthusiast</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote">
+                    <p>"The Focused Flexibility Training system brings me a sense of deep calm and well-being, enhancing my awareness of my muscles and how they work together to support me. I'm more aware of my posture and the chronic knots in my shoulders."</p>
+                </div>
+                <div class="author">Kay B, Indexer</div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .success-stories {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .header-section {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    h1 {
+        color: var(--color-primary);
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .review-cta {
+        background: linear-gradient(to right, #f8f9fa, white);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-cta p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .google-link img {
+        max-width: 200px;
+        transition: transform 0.3s ease;
+    }
+
+    .google-link:hover img {
+        transform: scale(1.05);
+    }
+
+    .testimonials {
+        display: grid;
+        gap: 2rem;
+    }
+
+    .testimonial-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .quote {
+        position: relative;
+        padding: 1rem;
+    }
+
+    .quote::before {
+        content: '"';
+        position: absolute;
+        top: -20px;
+        left: -10px;
+        font-size: 4rem;
+        color: var(--color-primary);
+        opacity: 0.2;
+    }
+
+    .quote p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+    }
+
+    .author {
+        font-weight: 500;
+        color: var(--color-primary);
+        text-align: right;
+        font-style: italic;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 2px solid #f0f0f0;
+    }
+
+    @media (max-width: 768px) {
+        .success-stories {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .testimonial-card {
+            padding: 1.5rem;
+        }
+
+        .quote p {
+            font-size: 1.1rem;
+        }
+
+        .testimonial-card:hover {
+            transform: none;
+        }
+    }
+</style>

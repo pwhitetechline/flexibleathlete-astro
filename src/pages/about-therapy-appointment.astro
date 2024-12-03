@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Therapy Appointment">
+    <main class="therapy-page">
+        <section class="in-person">
+            <h1>ONE-to-ONE Appointment with Julie Donnelly (Sarasota, FL)</h1>
+            <p class="intro">Reserve your session with Julie for a private Focused Flexibility Training or deep muscular therapy session at her office in Sarasota.</p>
+
+            <div class="session-cards">
+                <div class="session-card">
+                    <h3>60-Minute Session</h3>
+                    <p>A 60-minute session includes hands on therapy from Julie.</p>
+                    <div class="price">$120</div>
+                </div>
+
+                <div class="session-card featured">
+                    <h3>90-Minute In-Depth Session</h3>
+                    <p>A 90 minute session includes hands on therapy from Julie on the muscles causing the problem and detailed instruction on how to treat yourself in case of future pains, saving you time and money on repeated visits.</p>
+                    <div class="price">$180</div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <p>Payment is collected at session.</p>
+                <p>For an in-person appointment email or call the office at <a href="tel:919-886-1861">919-886-1861</a> or <a href="/contact">click here</a> for her inquiry form.</p>
+            </div>
+        </section>
+
+        <section class="remote">
+            <h2>REMOTELY (Work with Julie anywhere in the world)</h2>
+            <div class="remote-content">
+                <p class="highlight">Are you far from Julie's office and can't meet with her in person? Do you need help figuring out which muscle is causing your pain? Would you like to learn how YOU can stop the pain immediately?</p>
+                <p class="emphasis">Julie believes that given just a little direction, YOU are your own Best Therapist!</p>
+
+                <div class="remote-details">
+                    <p>Julie can give you detailed instructions as to how to find the source of pain, and then she will teach you how to relieve your symptoms via Skype.</p>
+                    <p>Available by contacting Julie here, after purchase you will be advised to email Julie with as much information as you can about your particular concern. Julie, our Pain Relief Expert, will review your email, respond with suggestions of what you should do prior to speaking to her, with each treatment shown in the included eBook copy of Julie's comprehensive guide Treat Yourself to Pain-Free Living and she will set up the appointment for a 30 minute Skype consultation.</p>
+                    <div class="remote-price">
+                        <span>Cost is $167</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .therapy-page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    h1, h2 {
+        color: var(--color-primary);
+        margin-bottom: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+        margin-top: 3rem;
+    }
+
+    .intro {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .session-cards {
+        display: flex;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .session-card {
+        flex: 1;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .session-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .session-card.featured {
+        border: 2px solid var(--color-primary);
+        background: linear-gradient(to bottom right, #f8f9fa, white);
+    }
+
+    .session-card h3 {
+        color: var(--color-primary);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .price {
+        font-size: 2rem;
+        color: var(--color-primary);
+        font-weight: bold;
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+
+    .contact-info {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+    }
+
+    .contact-info a {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .contact-info a:hover {
+        text-decoration: underline;
+    }
+
+    .remote-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight {
+        font-size: 1.3rem;
+        color: var(--color-primary);
+        margin-bottom: 1.5rem;
+    }
+
+    .emphasis {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: #2c3e50;
+        margin-bottom: 2rem;
+    }
+
+    .remote-details {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+
+    .remote-price {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .remote-price span {
+        font-size: 1.8rem;
+        color: var(--color-primary);
+        font-weight: bold;
+        padding: 0.5rem 2rem;
+        border-radius: 50px;
+        background: linear-gradient(to right, #f8f9fa, white);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+        .therapy-page {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        .session-cards {
+            flex-direction: column;
+        }
+
+        .price {
+            font-size: 1.8rem;
+        }
+
+        .remote-price span {
+            font-size: 1.6rem;
+        }
+    }
+</style>

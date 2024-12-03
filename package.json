@@ -9,8 +9,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.16",
     "@astrojs/check": "^0.9.4",
+    "@paypal/paypal-js": "^8.1.2",
+    "@stripe/stripe-js": "^5.2.0",
+    "astro": "^4.16.16",
+    "stripe": "^17.4.0",
     "typescript": "^5.7.2"
   }
 }

@@ -1,19 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { reviews } from '../data/reviews';
+
+// You'll need to replace these with your actual values
+const GOOGLE_API_KEY = import.meta.env.GOOGLE_API_KEY;
+const PLACE_ID = "YOUR_PLACE_ID"; // Your Google Place ID
+
 ---
 
 <Layout title="Massage Therapy Sarasota">
     <main>
-        <section class="welcome">
-            <h1>Welcome to the Flexible Athlete!</h1>
-            <h2>Sarasota Sports Massage and Chronic Pain Relief Treatments</h2>
-            
-            <div class="intro">
-                <p class="highlight">Is pain stopping you from doing the things you love?</p>
-                <p class="highlight">Are you active, playing a sport you love, but feeling the results of the repetitive strain on your muscles and joints?</p>
-            </div>
+        <section class="hero">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Welcome to the <span class="highlight-text">Flexible Athlete!</span></h1>
+                    <h2>Sarasota Sports Massage and Chronic Pain Relief Treatments</h2>
+                    
+                    <div class="intro">
+                        <p class="highlight">Is pain stopping you from doing the things you love?</p>
+                        <p class="highlight">Are you active, playing a sport you love, but feeling the results of the repetitive strain on your muscles and joints?</p>
+                    </div>
 
+                    <div class="hero-cta">
+                        <a href="/contact" class="primary-cta">Book Your Session</a>
+                        <a href="/about" class="secondary-cta">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="hero-features">
+                    <div class="feature-card">
+                        <span class="feature-icon">🏃‍♂️</span>
+                        <h3>Sports Recovery</h3>
+                        <p>Specialized techniques for athletes</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3>Targeted Relief</h3>
+                        <p>Focus on your specific pain points</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔄</span>
+                        <h3>Self-Treatment</h3>
+                        <p>Learn techniques you can do anywhere</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
             <div class="about-julie">
+                <h3>Meet Your Therapist</h3>
                 <p>Julie Donnelly, LMT has been a licensed sports massage therapist working with athletes and active adults since 1989, with licenses in Florida and New York. The developer of the Julstro Method, Julie has worked with professional, endurance, world-class and local athletes, teaching them Focused Flexibility Training® self-treatments they use to keep their muscles and joints from being over-strained and injured.</p>
             </div>
 
@@ -23,148 +60,374 @@ import Layout from '../layouts/Layout.astro';
                     height="315" 
                     src="https://www.youtube.com/embed/dSrxURd8ZJk" 
                     title="Flexible Athlete Introduction" 
-                    frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>
             </div>
+        </section>
 
+        <section class="services-section">
             <div class="services">
+                <h3>Personalized Care for Athletes</h3>
                 <p>Whether you cycle, run, swim, enjoy walking, playing tennis or golf, Julie will help you improve your flexibility while eliminating the spasms that cause pain. As an athlete you may be far from home when pain or stiffness strikes. Julie teaches you how to do simple techniques that you can do while you are playing your sport.</p>
                 
                 <p>Each session is tailored to your specific needs, and focuses on finding and eliminating the source of your pain. Give me a call today and allow me to answer any questions or concerns you may have.</p>
                 
-                <p class="emphasis">YOU WILL ALSO LEARN SIMPLE TECHNIQUES YOU CAN DO YOURSELF!</p>
+                <div class="cta-box">
+                    <p class="emphasis">YOU WILL ALSO LEARN SIMPLE TECHNIQUES YOU CAN DO YOURSELF!</p>
+                    <a href="/contact" class="cta-button">Start Your Journey Today</a>
+                </div>
             </div>
+        </section>
 
+        <section class="treatments-section">
             <div class="treatments">
-                <h3>Relieve These Common Aches & Pains with a Personalized Sports Massage Therapy Session:</h3>
-                <div class="conditions-grid">
+                <h3>Relieve These Common Aches & Pains</h3>
+                <p class="section-subtitle">with a Personalized Sports Massage Therapy Session</p>
+                
+                <div class="treatments-grid">
+                    <div class="treatment-category">
+                        <h4>Lower Body</h4>
+                        <div class="treatment-cards">
+                            <div class="treatment-card">
+                                <span class="icon">🦶</span>
+                                <h5>Plantar Fasciitis</h5>
+                                <p>Relief from heel and arch pain</p>
+                            </div>
+                            <div class="treatment-card">
+                                <span class="icon">🦵</span>
+                                <h5>Achilles Tendonitis</h5>
+                                <p>Heal ankle and heel tension</p>
+                            </div>
+                            <div class="treatment-card">
+                                <span class="icon">🏃</span>
+                                <h5>Shin Splints</h5>
+                                <p>Reduce lower leg pain</p>
+                            </div>
+                            <div class="treatment-card">
+                                <span class="icon">🦿</span>
+                                <h5>Knee Pain</h5>
+                                <p>Improve knee mobility</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="treatment-category">
+                        <h4>Core & Back</h4>
+                        <div class="treatment-cards">
+                            <div class="treatment-card">
+                                <span class="icon">🔄</span>
+                                <h5>Sciatica</h5>
+                                <p>Relieve nerve pressure</p>
+                            </div>
+                            <div class="treatment-card">
+                                <span class="icon">🦯</span>
+                                <h5>Hip Pain</h5>
+                                <p>Restore hip flexibility</p>
+                            </div>
+                            <div class="treatment-card">
+                                <span class="icon">⚡</span>
+                                <h5>Low Back Pain</h5>
+                                <p>Ease lower back tension</p>
+                            </div>
+                            <div class="treatment-card">
+                                <span class="icon">🧬</span>
+                                <h5>Spine Care</h5>
+                                <p>Full spine treatment</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="treatment-category">
+                        <h4>Upper Body</h4>
+                        <div class="treatment-cards">
+                            <div class="treatment-card">
+                                <span class="icon">💪</span>
+                                <h5>Rotator Cuff</h5>
+                                <p>Shoulder rehabilitation</p>
+                            </div>
+                            <div class="treatment-card">
+                                <span class="icon">🎾</span>
+                                <h5>Tennis Elbow</h5>
+                                <p>Relieve arm strain</p>
+                            </div>
+                            <div class="treatment-card">
+                                <span class="icon">✍️</span>
+                                <h5>Wrist Pain</h5>
+                                <p>Improve wrist mobility</p>
+                            </div>
+                            <div class="treatment-card">
+                                <span class="icon">🤕</span>
+                                <h5>Headaches</h5>
+                                <p>Release neck tension</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-cta">
+                    <p>Don't see your specific condition? Many other conditions can be treated.</p>
+                    <a href="/contact" class="cta-button">Ask About Your Condition</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparison-section">
+            <h3>Why is Julstro Muscular Therapy Sport Massage Different?</h3>
+            <div class="comparison-grid">
+                <div class="comparison-card julstro">
+                    <h4>Julstro Muscular Therapy</h4>
                     <ul>
-                        <li>Plantar Fasciitis</li>
-                        <li>Achilles Tendonitis</li>
-                        <li>Shin Splints</li>
-                        <li>Sciatica</li>
-                        <li>Knee Pain</li>
-                        <li>Hip Pain</li>
-                        <li>Low Back Pain</li>
-                        <li>Wrist Pain</li>
+                        <li>Focused treatment targeting specific muscle spasms</li>
+                        <li>Comfortable treatment through clothing</li>
+                        <li>Flexible treatment locations</li>
+                        <li>Long-lasting or permanent results</li>
                     </ul>
+                </div>
+                <div class="comparison-card regular">
+                    <h4>Traditional Massage</h4>
                     <ul>
-                        <li>Pain Along the Entire Spine</li>
-                        <li>Rotator Cuff Injury</li>
-                        <li>Shoulder Pain</li>
-                        <li>Frozen Shoulder</li>
-                        <li>Upper Arm Pain</li>
-                        <li>Tennis / Golf Elbow</li>
-                        <li>Whiplash</li>
-                        <li>Headaches</li>
+                        <li>General full-body treatment</li>
+                        <li>Requires oil and removal of clothing</li>
+                        <li>Limited to private treatment areas</li>
+                        <li>Temporary relief for several hours</li>
                     </ul>
                 </div>
             </div>
+        </section>
 
-            <div class="comparison">
-                <h3>Why is Julstro Muscular Therapy Sport Massage Different Than Massage?</h3>
-                <div class="comparison-grid">
-                    <div class="julstro">
-                        <ul>
-                            <li>Julstro Muscular Therapy is not a full-body relaxing massage. It is a unique sport massage that focuses on the specific spasms that are putting pressure on the joint and/or nerve.</li>
-                            <li>Julstro Muscular Therapy is done through clothing without sliding on the skin, so oil is not necessary.</li>
-                            <li>Treatment is not only done in Julie's office, but is also done at a sporting event, the office, or any public place appropriate for the client's activity.</li>
-                            <li>Julstro Muscular Therapy eliminates the source of pain so the results are long-lasting or permanent.</li>
-                        </ul>
-                    </div>
-                    <div class="regular">
-                        <ul>
-                            <li>Massage is basically general in nature. It increases your circulation and flushes toxins out of the surface muscle fibers.</li>
-                            <li>Massage uses oil as a lubricant and can leave you feeling the need to take a shower.</li>
-                            <li>Treatment must be done in an office or other private area.</li>
-                            <li>Massage effects last for several hours.</li>
-                        </ul>
-                    </div>
+        <section class="reviews-section">
+            <h3>What Our Clients Say</h3>
+            <p class="section-subtitle">Client Reviews</p>
+            
+            <div class="reviews-container">
+                <div class="reviews-grid">
+                    {reviews.map(review => (
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">
+                                        {review.name.charAt(0)}
+                                    </div>
+                                    <div class="reviewer-details">
+                                        <h4>{review.name}</h4>
+                                        <div class="review-date">{review.date}</div>
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    {"★".repeat(review.rating)}
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                <p>{review.text}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div class="reviews-cta">
+                    <a href="https://www.google.com/search?q=flexible+athlete+sarasota&oq=flexible+athlete+sarasota#lrd=0x88c3410de2ad20db:0x390ef714ef61bbf7,1" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="google-reviews-btn">
+                        <img src="/google-reviews.svg" alt="Google Reviews" width="24" height="24" />
+                        Read More Reviews on Google
+                    </a>
                 </div>
             </div>
+        </section>
 
-            <div class="benefits">
-                <h3>More Ways You Benefit From Julie's Therapy:</h3>
-                <ul>
-                    <li>Target specific muscle groups that cause muscle tension and joint pain.</li>
-                    <li>Improved recovery time.</li>
-                    <li>Increased strength.</li>
-                    <li>Increased flexibility.</li>
-                    <li>A release of tight, overworked muscles.</li>
-                    <li>Natural joint pain relief by applying pressure to spasms, also called trigger points.</li>
-                    <li>Julie teaches you how you can easily release muscle tension before, during or after you exercise.</li>
-                    <li>Learn how to do a quick 5-10 minute self-treatment session on a particular muscle group.</li>
-                </ul>
-            </div>
-
-            <div class="closing">
-                <p>I look forward to welcoming you to the Flexible Athlete in Sarasota and Venice, Florida.</p>
-            </div>
+        <section class="closing-section">
+            <p>I look forward to welcoming you to the Flexible Athlete in Sarasota and Venice, Florida.</p>
+            <a href="/contact" class="cta-button">Book Your Session</a>
         </section>
     </main>
 </Layout>
 
 <style>
     main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    section {
+        padding: 3rem 2rem;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        position: relative;
+        padding: 6rem 2rem;
+        margin-bottom: 2rem;
+        overflow: hidden;
+    }
+
+    .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 0% 0%, rgba(65, 105, 225, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 100% 100%, rgba(65, 105, 225, 0.1) 0%, transparent 50%);
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .hero-text {
+        text-align: center;
         max-width: 800px;
         margin: 0 auto;
-        padding: 2rem 1rem;
     }
 
-    .welcome {
-        text-align: center;
+    .highlight-text {
+        background: linear-gradient(120deg, #4169E1, #357abd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
     }
 
-    h1 {
-        color: #333;
+    .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .hero h2 {
+        font-size: 1.8rem;
+        color: #666;
         margin-bottom: 2rem;
-    }
-
-    h2 {
-        color: #4169E1;
-        margin-bottom: 2rem;
-        font-size: 1.5rem;
-    }
-
-    h3 {
-        color: #333;
-        margin: 2rem 0 1rem;
-        text-align: left;
+        font-weight: 500;
     }
 
     .intro {
-        margin: 2rem 0;
+        margin: 2rem auto;
+        max-width: 700px;
     }
 
     .highlight {
         color: #4169E1;
-        font-size: 1.2rem;
-        /* margin-bottom: 1rem; */
-        line-height: 1.4rem;
+        font-size: 1.3rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
     }
 
-    .emphasis {
-        color: #ff0000;
+    .hero-cta {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 2.5rem;
+    }
+
+    .primary-cta {
+        background: #4169E1;
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
         font-weight: bold;
-        font-size: 1.2rem;
-        margin: 2rem 0;
+        font-size: 1.1rem;
+        transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 6px rgba(65, 105, 225, 0.2);
+    }
+
+    .primary-cta:hover {
+        background: #357abd;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(65, 105, 225, 0.3);
+    }
+
+    .secondary-cta {
+        background: transparent;
+        color: #4169E1;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        border: 2px solid #4169E1;
+        transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .secondary-cta:hover {
+        background: #4169E1;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .hero-features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .feature-card h3 {
+        color: #333;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .about-section, .services-section, .treatments-section, .comparison-section {
+        background: white;
+        border-radius: 8px;
+        margin: 2rem auto;
+        max-width: 1100px;
     }
 
     .about-julie, .services {
         text-align: left;
-        margin: 2rem 0;
         line-height: 1.6;
+        margin-bottom: 2rem;
     }
 
     .video-container {
         position: relative;
-        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        padding-bottom: 56.25%;
         height: 0;
         overflow: hidden;
         max-width: 800px;
         margin: 2rem auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .video-container iframe {
@@ -173,51 +436,371 @@ import Layout from '../layouts/Layout.astro';
         left: 0;
         width: 100%;
         height: 100%;
+        border-radius: 12px;
+    }
+
+    .cta-box {
+        background: #f8f9fa;
+        padding: 2rem;
         border-radius: 8px;
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    .emphasis {
+        color: #ff0000;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background: #4169E1;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 0.2s, background 0.2s;
+    }
+
+    .cta-button:hover {
+        background: #357abd;
+        transform: translateY(-2px);
     }
 
     .conditions-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
         text-align: left;
-        margin: 1rem 0;
+        margin: 2rem 0;
     }
 
     .comparison-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
-        text-align: left;
-        margin: 1rem 0;
+        margin: 2rem 0;
+    }
+
+    .comparison-card {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .comparison-card.julstro {
+        border-top: 4px solid #4169E1;
+    }
+
+    .comparison-card.regular {
+        border-top: 4px solid #666;
     }
 
     ul {
-        list-style-position: inside;
+        list-style-type: none;
         padding: 0;
     }
 
     li {
         margin-bottom: 1rem;
-        line-height: 1.4;
+        padding-left: 1.5rem;
+        position: relative;
     }
 
-    .benefits ul {
-        text-align: left;
-        max-width: 600px;
+    li::before {
+        content: "•";
+        color: #4169E1;
+        position: absolute;
+        left: 0;
+    }
+
+    .closing-section {
+        text-align: center;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        padding: 4rem 2rem;
+    }
+
+    .closing-section p {
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+    }
+
+    .treatments-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .treatments-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 20%, rgba(65, 105, 225, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(65, 105, 225, 0.05) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .treatments-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .treatment-category h4 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #333;
+        font-size: 1.4rem;
+    }
+
+    .treatment-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .treatment-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .treatment-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .treatment-card .icon {
+        font-size: 2rem;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .treatment-card h5 {
+        color: #4169E1;
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+    }
+
+    .treatment-card p {
+        color: #666;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .treatment-cta {
+        text-align: center;
+        margin-top: 3rem;
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .treatment-cta p {
+        margin-bottom: 1.5rem;
+        color: #666;
+    }
+
+    .reviews-section {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        padding: 4rem 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .reviews-container {
+        max-width: 1200px;
         margin: 0 auto;
     }
 
-    .closing {
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .review-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s;
+    }
+
+    .review-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .reviewer-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .reviewer-avatar {
+        width: 40px;
+        height: 40px;
+        background: #4169E1;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .reviewer-details h4 {
+        margin: 0;
+        color: #333;
+        font-size: 1rem;
+    }
+
+    .review-date {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 0.25rem;
+    }
+
+    .rating {
+        color: #FFD700;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    .review-content {
+        color: #444;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .review-content p {
+        margin: 0;
+    }
+
+    .reviews-cta {
+        text-align: center;
         margin-top: 3rem;
-        font-style: italic;
+    }
+
+    .google-reviews-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: white;
+        color: #444;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .google-reviews-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .google-reviews-btn img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
     }
 
     @media (max-width: 768px) {
-        .conditions-grid,
+        section {
+            padding: 3rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        .highlight {
+            font-size: 1.1rem;
+        }
+
         .comparison-grid {
             grid-template-columns: 1fr;
+        }
+
+        .treatment-cards {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .treatment-card {
+            padding: 1.25rem;
+        }
+
+        .treatment-card .icon {
+            font-size: 1.75rem;
+        }
+
+        .hero {
+            padding: 4rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero h2 {
+            font-size: 1.4rem;
+        }
+
+        .hero-features {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .hero-cta {
+            flex-direction: column;
             gap: 1rem;
+        }
+
+        .primary-cta, .secondary-cta {
+            width: 100%;
+            text-align: center;
+        }
+
+        .reviews-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .review-card {
+            padding: 1.25rem;
         }
     }
 </style>

@@ -1,14 +1,11 @@
 ---
-title: "3 Stretches for Plantar Fasciitis"
+title: "Stretches for Plantar Fasciitis – This will Help your Running Training"
 description: "This will Help your Running Training"
-date: 2024-12-02 
+date: "2024-12-02" 
 author: "Julie Donnelly" 
 categories: "Pain Management"
-tags: ["Plantar Fasciitis"]
+tags: ["Plantar Fasciitis", "Stretching", "Running"]
 ---
-
-# 3 Stretches for Plantar Fasciitis – This will Help your Running Training
-
 <img style="float: left; margin-right: 20px;" src="https://static.wixstatic.com/media/8def6c_224fecb564f84991a4548030275753e2~mv2.jpg/v1/fill/w_176,h_218,al_c,lg_1,q_80,enc_avif,quality_auto/8def6c_224fecb564f84991a4548030275753e2~mv2.jpg" alt="" />
 
 I have spoken to so many athletes about proper stretches for plantar fasciitis. Most athletes have been told to focus their attention on the foot.
@@ -40,13 +37,13 @@ Note: It is most beneficial to release the spasms (muscle knots) in the muscles 
 
 This is the case for any muscle as it “unties the knot” that has shortened the muscle allowing you to stretch without injuring the muscle fibers.
 
-<img style="float: left; margin-right: 20px;" src="https://static.wixstatic.com/media/8def6c_5674111fe7d54030b7c7c1fb05c2e4cd~mv2.jpg/v1/fill/w_175,h_296,al_c,q_80,blur_3,enc_avif,quality_auto/8def6c_5674111fe7d54030b7c7c1fb05c2e4cd~mv2.jpg" alt="" />
+<img style="float: left; margin-right: 20px;" src="https://static.wixstatic.com/media/8def6c_5674111fe7d54030b7c7c1fb05c2e4cd~mv2.jpg" alt="" />
 
 The picture on the left shows a common runners stretch for the gastrocnemius muscle.​
 
 In order to get a proper stretch, it is important to keep your heel on the ground as you tilt your body forward.
 
-<img style="float: right; margin-right: 20px;" src="https://static.wixstatic.com/media/8def6c_70d1f77a80b14efa97ea4e4722810eeb~mv2.jpg/v1/fill/w_168,h_265,al_c,q_80,blur_3,enc_avif,quality_auto/8def6c_70d1f77a80b14efa97ea4e4722810eeb~mv2.jpg" alt="" />
+<img style="float: right; margin-right: 20px;" src="https://static.wixstatic.com/media/8def6c_70d1f77a80b14efa97ea4e4722810eeb~mv2.jpg" alt="" />
 
 Slowly bring your bottom back while bending the knee of the leg you are stretching.​
 
@@ -54,7 +51,7 @@ Keep your heel firmly on the floor.​
 
 This stretch is deeper and often overlooked by runners, yet it is a key muscle for calf pain, Achilles tendonitis, heel pain, and plantar fasciitis.
 
-<img style="float: left; margin-right: 20px;" src="https://static.wixstatic.com/media/8def6c_ec815ca4aa7444f3bdae225876529cc6~mv2.jpg/v1/fill/w_139,h_211,al_c,q_80,blur_3,enc_avif,quality_auto/8def6c_ec815ca4aa7444f3bdae225876529cc6~mv2.jpg" alt="" />
+<img style="float: left; margin-right: 20px;" src="https://static.wixstatic.com/media/8def6c_ec815ca4aa7444f3bdae225876529cc6~mv2.jpg" alt="" />
 
 You can stretch both the tibialis anterior muscle and the peroneal muscles by just a slight rotation of your ankle.​
 

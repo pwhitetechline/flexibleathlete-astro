@@ -1,107 +1,206 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/animations.css';
+import '../styles/buttons.css';
 
-const { title } = Astro.props;
+interface Props {
+    title: string;
+    description?: string;
+    image?: string;
+    canonicalURL?: string;
+    type?: 'website' | 'article';
+}
+
+const {
+    title,
+    description = "Julie Donnelly's Flexible Athlete - Expert advice on sports injury prevention, treatment, and performance optimization through targeted muscle therapy.",
+    image = "/images/flexible-athlete-og.jpg",
+    canonicalURL = Astro.url.pathname,
+    type = "website"
+} = Astro.props;
+
+// Base URL for the site
+const siteURL = 'https://julstromethod.com';
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Flexible Athlete",
+    "image": [
+        `${siteURL}/images/flexible-athlete-og.jpg`
+    ],
+    "description": description,
+    "@id": `${siteURL}${Astro.url.pathname}`,
+    "url": `${siteURL}${Astro.url.pathname}`,
+    "telephone": "+1-941-404-5842",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sarasota",
+        "addressLocality": "Sarasota",
+        "addressRegion": "FL",
+        "postalCode": "34243",
+        "addressCountry": "US"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 27.3364,
+        "longitude": -82.5307
+    },
+    "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+    },
+    "sameAs": [
+        "https://www.facebook.com/JulstroMethod/",
+        "https://www.youtube.com/channel/UCLNvXyi-HWBu0K4WBZV6XLA"
+    ]
+};
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Nav />
-		<main>
-			<slot />
-		</main>
-		<Footer />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+
+        <!-- SEO Meta Tags -->
+        <meta name="description" content={description} />
+        <link rel="canonical" href={`${siteURL}${canonicalURL}`} />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content={type} />
+        <meta property="og:url" content={`${siteURL}${canonicalURL}`} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={`${siteURL}${image}`} />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={`${siteURL}${canonicalURL}`} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={`${siteURL}${image}`} />
+
+        <!-- Structured Data -->
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+        <!-- Preload Fonts -->
+        <link
+            rel="preload"
+            href="/fonts/atkinson-regular.woff"
+            as="font"
+            type="font/woff"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/atkinson-bold.woff"
+            as="font"
+            type="font/woff"
+            crossorigin
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <Nav />
+        <div class="scroll-progress"></div>
+        <main>
+            <slot />
+        </main>
+        <Footer />
+        <script src="../scripts/main.js"></script>
+        <style is:global>
+            :root {
+                /* Font families */
+                --font-heading: 'Montserrat', system-ui, sans-serif;
+                --font-body: 'Inter', system-ui, sans-serif;
+                
+                /* Font weights */
+                --weight-regular: 400;
+                --weight-medium: 500;
+                --weight-semibold: 600;
+                --weight-bold: 700;
+
+                /* Colors */
+                --color-text: #2c3e50;
+                --color-text-light: #666666;
+                --color-primary: #4169E1;
+                --color-background: #ffffff;
+            }
+
+            html {
+                font-family: var(--font-body);
+                background-color: var(--color-background);
+                color: var(--color-text);
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                line-height: 1.6;
+                font-weight: var(--weight-regular);
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                font-family: var(--font-heading);
+                font-weight: var(--weight-semibold);
+                line-height: 1.2;
+                margin: 0 0 1rem 0;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                font-weight: var(--weight-bold);
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+            }
+
+            h4 {
+                font-size: 1.25rem;
+            }
+
+            p {
+                margin: 0 0 1rem 0;
+            }
+
+            a {
+                color: var(--color-primary);
+                text-decoration: none;
+                transition: color 0.2s ease;
+            }
+
+            a:hover {
+                color: color-mix(in srgb, var(--color-primary) 80%, black);
+            }
+
+            /* Utility classes */
+            .text-gradient {
+                background: linear-gradient(45deg, var(--color-primary), #6c5ce7);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                color: transparent;
+            }
+        </style>
+    </body>
 </html>
-<style is:global>
-	:root {
-		/* Font families */
-		--font-heading: 'Montserrat', system-ui, sans-serif;
-		--font-body: 'Inter', system-ui, sans-serif;
-		
-		/* Font weights */
-		--weight-regular: 400;
-		--weight-medium: 500;
-		--weight-semibold: 600;
-		--weight-bold: 700;
-
-		/* Colors */
-		--color-text: #2c3e50;
-		--color-text-light: #666666;
-		--color-primary: #4169E1;
-		--color-background: #ffffff;
-	}
-
-	html {
-		font-family: var(--font-body);
-		background-color: var(--color-background);
-		color: var(--color-text);
-	}
-
-	body {
-		margin: 0;
-		padding: 0;
-		line-height: 1.6;
-		font-weight: var(--weight-regular);
-	}
-
-	h1, h2, h3, h4, h5, h6 {
-		font-family: var(--font-heading);
-		font-weight: var(--weight-semibold);
-		line-height: 1.2;
-		margin: 0 0 1rem 0;
-	}
-
-	h1 {
-		font-size: 2.5rem;
-		font-weight: var(--weight-bold);
-	}
-
-	h2 {
-		font-size: 2rem;
-	}
-
-	h3 {
-		font-size: 1.75rem;
-	}
-
-	h4 {
-		font-size: 1.25rem;
-	}
-
-	p {
-		margin: 0 0 1rem 0;
-	}
-
-	a {
-		color: var(--color-primary);
-		text-decoration: none;
-		transition: color 0.2s ease;
-	}
-
-	a:hover {
-		color: color-mix(in srgb, var(--color-primary) 80%, black);
-	}
-
-	/* Utility classes */
-	.text-gradient {
-		background: linear-gradient(45deg, var(--color-primary), #6c5ce7);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		color: transparent;
-	}
-</style>

@@ -3,110 +3,185 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-    const posts = await getCollection('posts');
-    return posts.map(post => ({
-        params: { slug: post.slug },
-        props: { post },
+    const blogEntries = await getCollection('posts');
+    return blogEntries.map(entry => ({
+        params: { slug: entry.slug }, props: { entry },
     }));
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { entry } = Astro.props;
+const { Content } = await entry.render();
 ---
 
-<Layout title={post.data.title}>
-    <article class="post-container">
-        <header>
-            <h1>{post.data.title}</h1>
+<Layout title={entry.data.title}>
+    <header class="post-header">
+        <div class="header-content">
+            <h1>{entry.data.title}</h1>
             <div class="post-meta">
-                <time datetime={post.data.date.toISOString()}>
-                    Posted on: {new Date(post.data.date).toLocaleDateString()}
-                </time>
-                <span class="author">By: {post.data.author}</span>
+                <div class="meta-info">
+                    <div class="author-date">
+                        <time datetime={entry.data.date}>
+                            {new Date(entry.data.date).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            })}
+                        </time>
+                        <span class="author">By {entry.data.author}</span>
+                    </div>
+                    <div class="meta-details">
+                        {entry.data.category && 
+                            <div class="category">
+                                <span class="meta-label">Category:</span>
+                                <a href={`/category/${entry.data.category.toLowerCase()}`}>{entry.data.category}</a>
+                            </div>
+                        }
+                        {entry.data.tags && entry.data.tags.length > 0 && 
+                            <div class="tags">
+                                <span class="meta-label">Tags:</span>
+                                {entry.data.tags.map(tag => (
+                                    <a href={`/tag/${tag.toLowerCase()}`} class="tag">#{tag}</a>
+                                ))}
+                            </div>
+                        }
+                    </div>
+                </div>
             </div>
-        </header>
-        
-        <div class="content">
+        </div>
+    </header>
+    <article class="blog-post">
+        <div class="post-content">
             <Content />
         </div>
     </article>
 </Layout>
 
 <style>
-    .post-container {
-        max-width: 800px;
+    .post-header {
+        background: linear-gradient(135deg, var(--color-primary) 0%, #6c5ce7 100%);
+        color: white;
+        padding: 2.5rem 0;
+        width: 780px;
         margin: 0 auto;
-        padding: 2rem 1rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
 
-    header {
-        margin-bottom: 2rem;
-        text-align: center;
+    .header-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .blog-post {
+        max-width: 800px;
+        margin: 0 auto;
+        margin-top: 2rem;
+    }
+
+    .post-content {
+        padding: 0 2rem;
     }
 
     h1 {
-        color: #333;
-        margin-bottom: 1rem;
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin: 0 0 1.5rem;
+        font-weight: 700;
     }
 
     .post-meta {
-        color: #666;
-        font-size: 0.875rem;
+        font-size: 0.95rem;
     }
 
-    .author {
-        margin-left: 1rem;
+    .meta-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 
-    .content {
-        line-height: 1.8;
-        color: #333;
+    .author-date {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        color: rgba(255, 255, 255, 0.9);
     }
 
-    .content :global(h2) {
-        color: #444;
-        margin: 2rem 0 1rem;
+    .author::before {
+        content: "•";
+        margin-right: 1rem;
+        opacity: 0.7;
     }
 
-    .content :global(h3) {
-        color: #444;
-        margin: 2rem 0 1rem;
+    .meta-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: center;
     }
 
-    .content :global(p) {
-        margin-bottom: 1.5rem;
+    .meta-label {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        margin-right: 0.5rem;
     }
 
-    .content :global(ul) {
-        margin: 1rem 0;
-        padding-left: 1.5rem;
+    .category a {
+        color: white;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        transition: background 0.3s ease;
     }
 
-    .content :global(li) {
-        margin-bottom: 0.5rem;
+    .category a:hover {
+        background: rgba(255, 255, 255, 0.3);
     }
 
-    .content {
-        line-height: 1.6;
+    .tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        align-items: center;
     }
 
-    /* Styles for images in blog posts */
-    .content :global(img) {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin: 1.5rem 0;
+    .tag {
+        color: white;
+        text-decoration: none;
+        font-size: 0.85rem;
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
     }
 
-    .content :global(img[style*="float: left"]) {
-        margin-right: 1.5rem;
-        margin-bottom: .25rem;
-        margin-top: 0;
+    .tag:hover {
+        opacity: 1;
     }
 
-    .content :global(img[style*="float: right"]) {
-        margin-left: 1.5rem;
-        margin-bottom: 1rem;
-        margin-top: 0;
+    @media (max-width: 768px) {
+        .post-header {
+            padding: 2rem 1.5rem;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta-info {
+            gap: 0.75rem;
+        }
+
+        .meta-details {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .post-content {
+            padding: 0 1.5rem;
+        }
     }
 </style>

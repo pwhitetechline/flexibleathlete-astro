@@ -1,8 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Success Stories & Testimonials - Flexible Athlete";
+const pageDescription = "Read inspiring success stories from athletes who have overcome injuries and improved their performance with Julie Donnelly's Flexible Athlete system. Real results from real athletes.";
 ---
 
-<Layout title="Success Stories">
+<Layout 
+    title={pageTitle}
+    description={pageDescription}
+    type="article"
+>
     <main class="success-stories">
         <section class="header-section">
             <h1>Flexible Athlete aka Julie Donnelly Testimonials</h1>

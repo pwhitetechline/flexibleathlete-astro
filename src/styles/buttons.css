@@ -1,0 +1,303 @@
+/* Base button styles */
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    overflow: hidden;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+}
+
+/* Primary button */
+.primary-cta {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 6px rgba(65, 105, 225, 0.2);
+}
+
+.primary-cta:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(65, 105, 225, 0.3);
+}
+
+.primary-cta:active {
+    transform: translateY(0);
+}
+
+/* Secondary button */
+.secondary-cta {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.secondary-cta:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Ripple effect */
+.btn::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(100);
+        opacity: 0;
+    }
+}
+
+/* Arrow animation */
+.btn-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+/* Pulse animation for CTA buttons */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(65, 105, 225, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(65, 105, 225, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(65, 105, 225, 0);
+    }
+}
+
+/* Loading state */
+.btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn.loading .btn-text {
+    visibility: hidden;
+}
+
+.btn.loading::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Button group styles */
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+}
+
+/* Ghost button variant */
+.ghost-cta {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid #e0e0e0;
+}
+
+.ghost-cta:hover {
+    background: #f8f9fa;
+    border-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+/* Success button variant */
+.success-cta {
+    background: #28a745;
+    color: white;
+}
+
+.success-cta:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+/* Warning button variant */
+.warning-cta {
+    background: #ffc107;
+    color: #000;
+}
+
+.warning-cta:hover {
+    background: #e0a800;
+    transform: translateY(-2px);
+}
+
+/* Danger button variant */
+.danger-cta {
+    background: #dc3545;
+    color: white;
+}
+
+.danger-cta:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Icon button */
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.icon-btn:hover {
+    transform: rotate(15deg);
+}
+
+/* Outline variants */
+.outline-primary {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.outline-primary:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+.outline-success {
+    background: transparent;
+    border: 2px solid #28a745;
+    color: #28a745;
+}
+
+.outline-success:hover {
+    background: #28a745;
+    color: white;
+}
+
+/* 3D effect buttons */
+.btn-3d {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.3s ease;
+}
+
+.btn-3d:hover {
+    transform: perspective(1000px) rotateX(10deg) translateY(-2px);
+}
+
+/* Gradient buttons */
+.gradient-cta {
+    background: linear-gradient(45deg, var(--color-primary), #357abd);
+    background-size: 200% auto;
+    transition: all 0.3s ease;
+}
+
+.gradient-cta:hover {
+    background-position: right center;
+}
+
+/* Scale effect */
+.scale-on-hover:hover {
+    transform: scale(1.05);
+}
+
+/* Shine effect */
+.shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.shine::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.shine:hover::before {
+    animation: shine 1s ease-out;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+        opacity: 0;
+    }
+}

@@ -1,10 +1,10 @@
 ---
 title: "Quick Relief for Sore Neck Muscles"
-date: 2024-01-17
+date: "2024-01-17"
 author: "Julie Donnelly"
 description: "Learn effective techniques for immediate relief from neck muscle pain and tension."
-categories: "Pain Management"
-tags: ["Sore Neck"]
+category: "Pain Management"
+tags: ["Neck Pain", "Cycling", "Stretching"]
 ---
 
 ## Sore neck muscles can really put a cramp (pun intended) on your cycling rides!

@@ -4,10 +4,10 @@ import { contactInfo } from '../data/contact';
 ---
 
 <Layout title="Contact Us">
-    <div class="contact-container">
+    <div class="contact-container fade-in">
         <h2>Let's Get You Moving</h2>
         <div class="contact-content">
-            <div class="contact-info">
+            <div class="contact-info slide-in">
                 <h3>Get in Touch</h3>
                 <p>Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
                 <div class="info-item">
@@ -38,35 +38,42 @@ import { contactInfo } from '../data/contact';
                 </div>
             </div>
             
-            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form slide-in">
                 <input type="hidden" name="access_key" value="1f092af7-b9ac-42e2-9147-f6924357f738">
                 <input type="hidden" name="subject" value="New Contact Form Submission from Flexible Athlete">
                 <input type="hidden" name="from_name" value="Flexible Athlete Website">
                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                 
-                <div class="form-group">
-                    <label for="name">Name</label>
+                <div class="form-input">
                     <input type="text" id="name" name="name" required>
+                    <label for="name">Your Name</label>
+                    <span class="focus-border"></span>
                 </div>
                 
-                <div class="form-group">
-                    <label for="email">Email</label>
+                <div class="form-input">
                     <input type="email" id="email" name="email" required>
+                    <label for="email">Email Address</label>
+                    <span class="focus-border"></span>
                 </div>
                 
-                <div class="form-group">
-                    <label for="message-subject">Subject</label>
+                <div class="form-input">
                     <input type="text" id="message-subject" name="message-subject" required>
+                    <label for="message-subject">Subject</label>
+                    <span class="focus-border"></span>
                 </div>
                 
-                <div class="form-group">
-                    <label for="message">Message</label>
+                <div class="form-input">
                     <textarea id="message" name="message" rows="5" required></textarea>
+                    <label for="message">Your Message</label>
+                    <span class="focus-border"></span>
                 </div>
 
                 <div id="result" class="result-message"></div>
                 
-                <button type="submit">Send Message</button>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-icon">→</span>
+                </button>
             </form>
         </div>
     </div>
@@ -76,19 +83,25 @@ import { contactInfo } from '../data/contact';
     .contact-container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 4rem 2rem;
     }
 
     h2 {
         text-align: center;
-        color: #333;
-        margin-bottom: 2rem;
+        color: var(--color-text);
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(120deg, var(--color-primary), #357abd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     .contact-content {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 4rem;
         margin-top: 2rem;
     }
 
@@ -99,121 +112,220 @@ import { contactInfo } from '../data/contact';
     }
 
     .contact-info {
-        background-color: #f9f9f9;
+        background: white;
         padding: 2rem;
-        border-radius: 8px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-info h3 {
+        color: var(--color-text);
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
     }
 
     .info-item {
-        margin: 1rem 0;
+        margin-bottom: 1.5rem;
     }
 
     .info-item a {
-        color: #4169E1;
+        color: var(--color-primary);
         text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .info-item a:hover {
+        color: #357abd;
     }
 
     .map-container {
         margin-top: 2rem;
-        border-radius: 8px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .contact-form {
-        display: grid;
-        gap: 1.5rem;
+        background: white;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
 
-    .form-group {
-        display: grid;
-        gap: 0.25rem;
+    .form-input {
+        position: relative;
+        margin-bottom: 2rem;
     }
 
-    label {
+    .form-input input,
+    .form-input textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background: transparent;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+    .form-input textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .form-input label {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        padding: 0 0.25rem;
         color: #666;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        background: white;
     }
 
-    input, textarea {
-        padding: 0.75rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-family: inherit;
+    .form-input input:focus,
+    .form-input textarea:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 2px rgba(65, 105, 225, 0.1);
     }
 
-    .contact-form button {
-        padding: 0.75rem 1.5rem;
-        background: #4285f4;
+    .form-input input:focus + label,
+    .form-input textarea:focus + label,
+    .form-input input:not(:placeholder-shown) + label,
+    .form-input textarea:not(:placeholder-shown) + label {
+        top: -0.5rem;
+        left: 0.8rem;
+        font-size: 0.8rem;
+        color: var(--color-primary);
+    }
+
+    .focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--color-primary);
+        transition: width 0.3s ease;
+    }
+
+    .form-input input:focus ~ .focus-border,
+    .form-input textarea:focus ~ .focus-border {
+        width: 100%;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 1rem 2rem;
+        background: var(--color-primary);
         color: white;
         border: none;
-        border-radius: 4px;
-        cursor: pointer;
+        border-radius: 8px;
         font-size: 1rem;
-        width: auto;
-        justify-self: stretch;
-        transition: background 0.3s ease;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
     }
 
-    .contact-form button:hover {
+    .submit-btn:hover {
         background: #357abd;
+        transform: translateY(-2px);
+    }
+
+    .btn-icon {
+        transition: transform 0.3s ease;
+    }
+
+    .submit-btn:hover .btn-icon {
+        transform: translateX(4px);
     }
 
     .result-message {
-        margin: 1rem 0;
+        margin-top: 1rem;
         padding: 1rem;
-        border-radius: 4px;
-        display: none;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 500;
     }
 
     .result-message.success {
-        display: block;
-        background-color: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
+        background: #e6ffe6;
+        color: #006600;
     }
 
     .result-message.error {
-        display: block;
-        background-color: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
+        background: #ffe6e6;
+        color: #660000;
+    }
+
+    @media (max-width: 768px) {
+        .contact-container {
+            padding: 2rem 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        .contact-form {
+            padding: 1.5rem;
+        }
     }
 </style>
 
 <script>
+    // Form validation and submission handling
     const form = document.querySelector('.contact-form');
-    const result = document.getElementById('result');
+    const resultDiv = document.getElementById('result');
 
     if (form) {
-        document.addEventListener('submit', async (e) => {
-            if (e.target.classList.contains('contact-form')) {
-                e.preventDefault();
-                result.style.display = 'none';
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = form.querySelector('.submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const originalText = btnText.textContent;
+            btnText.textContent = 'Sending...';
+            submitBtn.disabled = true;
 
-                try {
-                    const formData = new FormData(e.target);
-                    const response = await fetch(e.target.action, {
-                        method: 'POST',
-                        body: formData
-                    });
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form)
+                });
 
-                    const data = await response.json();
+                const data = await response.json();
 
-                    if (response.status === 200) {
-                        result.innerHTML = 'Thank you for your message. We will get back to you soon!';
-                        result.classList.add('success');
-                        e.target.reset();
-                    } else {
-                        result.innerHTML = data.message || 'Something went wrong. Please try again.';
-                        result.classList.add('error');
-                    }
-                } catch (error) {
-                    result.innerHTML = 'Something went wrong. Please try again.';
-                    result.classList.add('error');
+                if (data.success) {
+                    resultDiv.textContent = 'Message sent successfully!';
+                    resultDiv.className = 'result-message success';
+                    form.reset();
+                } else {
+                    throw new Error('Something went wrong');
                 }
-
-                result.style.display = 'block';
+            } catch (error) {
+                resultDiv.textContent = 'Failed to send message. Please try again.';
+                resultDiv.className = 'result-message error';
+            } finally {
+                // Restore button state
+                btnText.textContent = originalText;
+                submitBtn.disabled = false;
             }
         });
+
+        // Add shake animation to invalid fields on form submission attempt
+        form.addEventListener('invalid', (e) => {
+            e.target.classList.add('shake');
+            setTimeout(() => {
+                e.target.classList.remove('shake');
+            }, 1000);
+        }, true);
     }
 </script>

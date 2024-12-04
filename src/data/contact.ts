@@ -1,5 +1,5 @@
 export const contactInfo = {
-    email: 'pwhite.xm@gmail.com',
+    email: 'julie@flexibleathlete.com',
     phone: '(919) 886-1861',
     address: {
         street: '2650 Bahia Vista St.',

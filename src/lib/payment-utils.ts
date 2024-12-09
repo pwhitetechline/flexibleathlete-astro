@@ -1,28 +1,29 @@
-import Stripe from 'stripe';
+// Removed Stripe-related code as Stripe is no longer used.
+// import Stripe from 'stripe';
 
-const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY, {
-    apiVersion: '2023-10-16'
-});
+// const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY, {
+//     apiVersion: '2024-11-20.acacia'
+// });
 
-export async function createStripePaymentIntent(amount: number, productName: string) {
-    try {
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: Math.round(amount * 100), // Convert to cents
-            currency: 'usd',
-            description: productName,
-            automatic_payment_methods: {
-                enabled: true,
-            },
-        });
+// export async function createStripePaymentIntent(amount: number, productName: string) {
+//     try {
+//         const paymentIntent = await stripe.paymentIntents.create({
+//             amount: Math.round(amount * 100), // Convert to cents
+//             currency: 'usd',
+//             description: productName,
+//             automatic_payment_methods: {
+//                 enabled: true,
+//             },
+//         });
 
-        return {
-            clientSecret: paymentIntent.client_secret
-        };
-    } catch (error) {
-        console.error('Error creating payment intent:', error);
-        throw error;
-    }
-}
+//         return {
+//             clientSecret: paymentIntent.client_secret
+//         };
+//     } catch (error) {
+//         console.error('Error creating payment intent:', error);
+//         throw error;
+//     }
+// }
 
 export function validatePayPalTransaction(details: any) {
     // Implement PayPal transaction validation

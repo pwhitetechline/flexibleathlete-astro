@@ -335,22 +335,24 @@ const pathname = Astro.url.pathname;
 <script>
     // Sticky Header
     const header = document.getElementById('site-header');
-    const headerHeight = header.offsetHeight;
-    let isSticky = false;
+    if (header) {
+        const headerHeight = header.offsetHeight;
+        let isSticky = false;
 
-    window.addEventListener('scroll', () => {
-        const shouldBeSticky = window.scrollY > headerHeight;
-        
-        if (shouldBeSticky && !isSticky) {
-            header.classList.add('sticky');
-            document.body.style.paddingTop = headerHeight + 'px';
-            isSticky = true;
-        } else if (!shouldBeSticky && isSticky) {
-            header.classList.remove('sticky');
-            document.body.style.paddingTop = '0';
-            isSticky = false;
-        }
-    });
+        window.addEventListener('scroll', () => {
+            const shouldBeSticky = window.scrollY > headerHeight;
+            
+            if (shouldBeSticky && !isSticky) {
+                header.classList.add('sticky');
+                document.body.style.paddingTop = headerHeight + 'px';
+                isSticky = true;
+            } else if (!shouldBeSticky && isSticky) {
+                header.classList.remove('sticky');
+                document.body.style.paddingTop = '0';
+                isSticky = false;
+            }
+        });
+    }
 
     // Mobile Menu
     if (window.innerWidth <= 768) {
@@ -358,10 +360,12 @@ const pathname = Astro.url.pathname;
         dropdowns.forEach(dropdown => {
             const link = dropdown.querySelector('a');
             
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                dropdown.classList.toggle('show');
-            });
+            if (link) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    dropdown.classList.toggle('show');
+                });
+            }
         });
     }
 </script>

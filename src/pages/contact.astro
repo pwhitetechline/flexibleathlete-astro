@@ -282,49 +282,61 @@ import { contactInfo } from '../data/contact';
 <script>
     // Form validation and submission handling
     const form = document.querySelector('.contact-form');
-    const resultDiv = document.getElementById('result');
-
-    if (form) {
+    if (form instanceof HTMLFormElement) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             // Show loading state
             const submitBtn = form.querySelector('.submit-btn');
-            const btnText = submitBtn.querySelector('.btn-text');
-            const originalText = btnText.textContent;
-            btnText.textContent = 'Sending...';
-            submitBtn.disabled = true;
+            if (submitBtn instanceof HTMLButtonElement) {
+                const btnText = submitBtn.querySelector('.btn-text');
+                if (btnText) {
+                    const originalText = btnText.textContent;
+                    btnText.textContent = 'Sending...';
+                    submitBtn.disabled = true;
 
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form)
-                });
+                    try {
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: new FormData(form)
+                        });
 
-                const data = await response.json();
+                        const data = await response.json();
 
-                if (data.success) {
-                    resultDiv.textContent = 'Message sent successfully!';
-                    resultDiv.className = 'result-message success';
-                    form.reset();
-                } else {
-                    throw new Error('Something went wrong');
+                        if (data.success) {
+                            const resultDiv = document.getElementById('result');
+                            if (resultDiv) {
+                                resultDiv.textContent = 'Message sent successfully!';
+                                resultDiv.className = 'result-message success';
+                                form.reset();
+                            }
+                        } else {
+                            throw new Error('Something went wrong');
+                        }
+                    } catch (error) {
+                        const resultDiv = document.getElementById('result');
+                        if (resultDiv) {
+                            resultDiv.textContent = 'Failed to send message. Please try again.';
+                            resultDiv.className = 'result-message error';
+                        }
+                    } finally {
+                        // Restore button state
+                        btnText.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }
                 }
-            } catch (error) {
-                resultDiv.textContent = 'Failed to send message. Please try again.';
-                resultDiv.className = 'result-message error';
-            } finally {
-                // Restore button state
-                btnText.textContent = originalText;
-                submitBtn.disabled = false;
             }
         });
 
         // Add shake animation to invalid fields on form submission attempt
         form.addEventListener('invalid', (e) => {
-            e.target.classList.add('shake');
+            if (e.target) {
+                (e.target as HTMLElement).classList.add('shake');
+            }
             setTimeout(() => {
-                e.target.classList.remove('shake');
+                if (e.target) {
+                    (e.target as HTMLElement).classList.remove('shake');
+                }
             }, 1000);
         }, true);
     }

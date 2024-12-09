@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('posts');
-posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+posts.sort((a, b) => Number(b.data.date.valueOf()) - Number(a.data.date.valueOf()));
 ---
 
 <Layout title="Articles">

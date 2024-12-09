@@ -94,7 +94,19 @@ const schema = {
         <meta property="twitter:image" content={`${siteURL}${image}`} />
 
         <!-- Structured Data -->
-        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <!-- Google Tag Manager -->
+<script>
+    // @ts-ignore
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s); var dl=l!='dataLayer'?'&l='+l:''; 
+    (j as HTMLScriptElement).async=true; (j as HTMLScriptElement).src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl; 
+    if (f.parentNode) f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','G-PN027X9K7G');
+  </script>
+  <!-- End Google Tag Manager -->
 
         <!-- Preload Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,6 +124,7 @@ const schema = {
                 color: var(--color-text);
             }
         </style>
+ 
     </head>
     <body>
         <Nav />

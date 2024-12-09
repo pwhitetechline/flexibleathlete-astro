@@ -56,7 +56,7 @@ treatmentCards.forEach(card => {
 const heroBackground = document.querySelector('.hero-background');
 if (heroBackground) {
     window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
+        const scrolled = window.scrollY;
         heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
     });
 }
